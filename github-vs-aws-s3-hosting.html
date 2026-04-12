@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ein technischer Vergleich zwischen GitHub Pages und AWS S3 + CloudFront für das Hosting statischer Websites.">
+    <meta name="author" content="Haris Naeem">
+    <meta name="theme-color" content="#0f172a">
+    
+    <!-- SEO & Social Media Meta Tags -->
+    <meta property="og:title" content="GitHub Pages vs. AWS S3 - Haris Naeem">
+    <meta property="og:description" content="Hosting eines statischen Portfolios: Kostenloser GitHub Service vs. professionelle AWS Infrastruktur.">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="de_DE">
+
+    <title>GitHub Pages vs. AWS S3 | Haris Naeem</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body data-active-lang="de">
+
+<!-- NAVIGATION -->
+<nav class="nav">
+    <a href="index.html" class="nav-name">Haris Naeem</a>
+    
+    <div class="nav-links">
+        <a href="index.html#leistungen" class="nav-link">
+            <span data-lang="de">Leistungen</span>
+            <span data-lang="en">Services</span>
+        </a>
+        <a href="index.html#projekte" class="nav-link">
+            <span data-lang="de">Projekte</span>
+            <span data-lang="en">Projects</span>
+        </a>
+        <a href="index.html#notizbuch" class="nav-link">
+            <span data-lang="de">Notizbuch</span>
+            <span data-lang="en">Notebook</span>
+        </a>
+        <a href="index.html#kooperation" class="nav-link">
+            <span data-lang="de">Kooperation</span>
+            <span data-lang="en">Collaboration</span>
+        </a>
+        <a href="index.html#kontakt" class="nav-link">
+            <span data-lang="de">Kontakt</span>
+            <span data-lang="en">Contact</span>
+        </a>
+
+        <div class="nav-lang-switch">
+            <button id="lang-toggle" aria-label="Change Language">EN</button>
+        </div>
+    </div>
+
+    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</nav>
+
+<!-- BLOG POST CONTENT -->
+<section class="section-spacer">
+    <div class="container">
+        <article class="blog-post">
+            
+            <header class="blog-header">
+                <div class="blog-meta">
+                    <span class="blog-meta-item">
+                        <span data-lang="de">Datum:</span>
+                        <span data-lang="en">Date:</span>
+                        <time datetime="2026-04-12">12. April 2026</time>
+                    </span>
+                    <span class="blog-meta-item">
+                        <span class="blog-category">
+                            <span data-lang="de">Web Development & Cloud</span>
+                            <span data-lang="en">Web Development & Cloud</span>
+                        </span>
+                    </span>
+                    <span class="blog-meta-item">
+                        <span data-lang="de">Lesezeit:</span>
+                        <span data-lang="en">Read time:</span>
+                        <span data-lang="de">8 Minuten</span>
+                        <span data-lang="en">8 minutes</span>
+                    </span>
+                </div>
+
+                <h1 class="blog-title">
+                    <span data-lang="de">GitHub Pages vs. AWS S3: Ein technischer Vergleich</span>
+                    <span data-lang="en">GitHub Pages vs. AWS S3: A Technical Comparison</span>
+                </h1>
+
+                <p class="blog-subtitle">
+                    <span data-lang="de">Wie ich meine statische Portfolio-Website parallel auf GitHub (Kostenlos) und AWS (Hochperformant) hoste.</span>
+                    <span data-lang="en">How I host my static portfolio website in parallel on GitHub (Free) and AWS (High Performance).</span>
+                </p>
+            </header>
+
+            <div class="blog-content">
+                <!-- German Content -->
+                <div data-lang="de">
+                    <p>Als ich meine Portfolio-Website gebaut habe, stand ich vor einer klassischen Entscheidung: Wie hoste ich eine leichte, statische Website (HTML, CSS und minimales JS), die schnell, sicher und professionell ist?</p>
+                    
+                    <p>Da mein Portfolio hauptsächlich aus Text und Code besteht – keine schweren Videodateien oder riesigen Bildergalerien – brauchte ich keine komplexe serverseitige Verarbeitung. Ich brauchte einen Ort zum Speichern von Dateien und einen schnellen Weg, sie auszuliefern.</p>
+
+                    <p>Um die Vor- und Nachteile wirklich zu verstehen, habe ich beschlossen, den <strong>exakt gleichen Codebasis</strong> gleichzeitig in zwei verschiedenen Umgebungen bereitzustellen:</p>
+                    <ol>
+                        <li><strong>GitHub Pages:</strong> Die "Kostenlose & Einfache" Option.</li>
+                        <li><strong>AWS S3 + CloudFront:</strong> Die "Professionelle & Skalierbare" Option.</li>
+                    </ol>
+
+                    <p>Hier ist ein detaillierter technischer Vergleich, wie beide Systeme eine leichte statische Site verarbeiten.</p>
+
+                    <h2>Der Herausforderer 1: GitHub Pages (Der kostenlose Standard)</h2>
+                    <p>GitHub Pages ist die Standardlösung für Open-Source-Projekte und persönliche Portfolios. Es ist speziell für statische Sites konzipiert.</p>
+
+                    <h3>Wie es funktioniert</h3>
+                    <p>Man schiebt den Code in ein GitHub-Repository. GitHub sucht dann nach einer <code>index.html</code>-Datei (oder einem Jekyll-Build-Prozess) und stellt sie über ihre Server via HTTPS bereit.</p>
+
+                    <h3>Die Architektur</h3>
+                    <ul>
+                        <li><strong>Storage:</strong> Git Repository.</li>
+                        <li><strong>Server:</strong> GitHub's interne HTTP-Server.</li>
+                        <li><strong>DNS:</strong> <code>username.github.io</code> (Subdomain) oder Custom Domain Mapping.</li>
+                        <li><strong>SSL:</strong> Automatisch (Let's Encrypt Integration, die von GitHub gehandhabt wird).</li>
+                    </ul>
+
+                    <h3>Vorteile für eine leichte Site</h3>
+                    <ul>
+                        <li><strong>Kosten:</strong> 0 €. Wirklich kostenlos.</li>
+                        <li><strong>CI/CD:</strong> Integriert. Jeder <code>git push</code> an den <code>main</code>-Branch löst eine automatische Bereitstellung aus. Das ist der schnellste Workflow für Iterationen.</li>
+                        <li><strong>Setup:</strong> Dauert weniger als 5 Minuten. "Pages" in den Repo-Einstellungen aktivieren, und schon ist es fertig.</li>
+                    </ul>
+
+                    <h3>Nachteile</h3>
+                    <ul>
+                        <li><strong>Cache-Control:</strong> Man hat begrenzte Kontrolle über HTTP-Cache-Header. GitHub setzt eigene Standardwerte, die möglicherweise nicht für bestimmte Asset-Versionierungsstrategien optimal sind.</li>
+                        <li><strong>Jekyll Interference:</strong> Wenn man keine <code>.nojekyll</code>-Datei verwendet, versucht GitHub möglicherweise, die Site durch Jekyll (einen Ruby Static Site Generator) zu verarbeiten, was die Ordnerstruktur oder Dateinamen mit Unterstrichen stören kann.</li>
+                        <li><strong>Branding:</strong> Auch wenn man eine Custom Domain verwenden kann, ist die zugrundeliegende Infrastruktur sichtbar "GitHub".</li>
+                    </ul>
+
+                    <h2>Der Herausforderer 2: AWS S3 + CloudFront (Der Enterprise Stack)</h2>
+                    <p>Für die Produktionsversion meiner Site verwende ich Amazon Web Services (AWS). Das ist nicht nur "Hosting"; es ist Infrastructure-as-Code. Für eine statische Site benötigen wir vier spezifische Dienste, die zusammenarbeiten.</p>
+
+                    <h3>1. AWS S3 (Simple Storage Service)</h3>
+                    <p><strong>Funktion:</strong> Objekt-Speicher.<br>
+                    S3 ist kein herkömmliches Dateisystem; es ist ein Objektspeicher. Er speichert die eigentlichen Dateien (<code>index.html</code>, <code>styles.css</code>, <code>scripts.js</code>).</p>
+                    <ul>
+                        <li><strong>Konfiguration:</strong> Ich habe einen "Public Bucket" erstellt und meine Dateien hochgeladen.</li>
+                        <li><strong>Static Website Hosting:</strong> Ich habe die Eigenschaft "Static Website Hosting" auf dem Bucket aktiviert. Das weist S3 an, <code>index.html</code> bereitzustellen, wenn ein Benutzer das Stammverzeichnis anfordert.</li>
+                        <li><strong>Haltbarkeit:</strong> S3 bietet 99,999999999% (11 9's) Haltbarkeit. Meine Portfolio-Dateien sind hier sicherer als auf der Festplatte meines Laptops.</li>
+                    </ul>
+
+                    <h3>2. AWS CloudFront (Content Delivery Network)</h3>
+                    <p><strong>Funktion:</strong> Geschwindigkeit & Global Caching.<br>
+                    Wenn Benutzer direkt auf meinen S3-Bucket aus Deutschland zugreifen würden, kämen die Daten aus der AWS-Region Frankfurt. Das ist schnell, aber CloudFront macht es augenblicklich.</p>
+                    <ul>
+                        <li><strong>Edge Locations:</strong> CloudFront kopiert meine statischen Dateien in Hunderte von Rechenzentren (Edge Locations) weltweit. Wenn ein Benutzer in Berlin die Site anfordert, erhält er sie vom Berlin-Edge, nicht vom Origin-Server.</li>
+                        <li><strong>Komprimierung:</strong> CloudFront komprimiert Dateien (Gzip/Brotli) automatisch am Edge. Da mein CSS und JS textbasiert sind, schrumpfen sie erheblich, bevor sie den Browser des Benutzers erreichen.</li>
+                        <li><strong>HTTPS:</strong> CloudFront fungiert als sicherer Endpunkt. Er übernimmt die SSL/TLS-Terminierung.</li>
+                    </ul>
+
+                    <h3>3. AWS ACM (AWS Certificate Manager)</h3>
+                    <p><strong>Funktion:</strong> SSL/TLS Zertifikate.<br>
+                    Um das "Schloss"-Symbol (HTTPS) auf einer Custom Domain wie <code>harisn.de</code> zu haben, benötigt man ein Zertifikat.</p>
+                    <ul>
+                        <li><strong>Prozess:</strong> Ich habe ein öffentliches Zertifikat in ACM für <code>harisn.de</code> und <code>*.harisn.de</code> angefordert.</li>
+                        <li><strong>Validierung:</strong> Da ich mein DNS über Route 53 verwalte, konnte ich den Domain-Besitz automatisch durch Hinzufügen eines CNAME-Eintrags validieren. Keine manuelle E-Mail-Verifizierung war nötig.</li>
+                        <li><strong>Integration:</strong> Sobald ausgestellt, habe ich dieses Zertifikat einfach an meine CloudFront-Distribution angehängt. ACM kümmert sich um die automatische Erneuerung.</li>
+                    </ul>
+
+                    <h3>4. Amazon Route 53 (DNS)</h3>
+                    <p><strong>Funktion:</strong> Traffic Routing.<br>
+                    Route 53 ist das Telefonbuch des Internets. Es sagt Browsern, wohin sie gehen sollen, wenn jemand <code>harisn.de</code> tippt.</p>
+                    <ul>
+                        <li><strong>Alias Records:</strong> Im Gegensatz zu standard CNAME-Records können Route 53 "Alias Records" eine Root-Domain (<code>harisn.de</code>) direkt einer CloudFront-Distribution oder einem S3-Bucket zuordnen.</li>
+                        <li><strong>Latency-Based Routing:</strong> Wenn ich mehrere Server hätte, könnte Route 53 Benutzer zum physisch nächstgelegenen weiterleiten. Für meine einzelne Site sorgt es für hohe Verfügbarkeit.</li>
+                    </ul>
+
+                    <h3>Vorteile für eine leichte Site</h3>
+                    <ul>
+                        <li><strong>Performance:</strong> Die Kombination aus CloudFront-Caching und Brotli-Komprimierung macht die Site unglaublich schnell, sogar auf mobilen Netzen.</li>
+                        <li><strong>Kontrolle:</strong> Ich kann granulare Cache-Regeln festlegen (z.B. "Dieses Bild ein Jahr cachen, aber das HTML stündlich prüfen").</li>
+                        <li><strong>Sicherheit:</strong> Ich könnte AWS WAF (Web Application Firewall) konfigurieren, wenn ich jemals spezifische Traffic-Muster blockieren müsste.</li>
+                    </ul>
+
+                    <h3>Nachteile</h3>
+                    <ul>
+                        <li><strong>Kosten:</strong> Während der S3-Speicher Pfennige kostet, kostet Route 53 etwa 0,50 €/Monat für die Hosted Zone. Der Datentransfer ist bis zu einem Limit kostenlos, aber hoher Traffic könnte Kosten verursachen.</li>
+                        <li><strong>Komplexität:</strong> Das Einrichten der S3-Bucket-Policy, CloudFront-Origin und ACM-Validierung dauert etwa eine Stunde im Vergleich zu den 5 Minuten von GitHub.</li>
+                    </ul>
+
+                                        <h2 id="vergleich">Der Vergleich</h2>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; color: var(--text-secondary);">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--border); text-align: left;">
+                                    <th style="padding: 0.75rem; color: var(--text-main); width: 30%;">Feature</th>
+                                    <th style="padding: 0.75rem; color: var(--text-main); width: 35%;">GitHub Pages</th>
+                                    <th style="padding: 0.75rem; color: var(--text-main); width: 35%;">AWS S3 + CloudFront</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid var(--border-hover);">
+                                    <td style="padding: 0.75rem; font-weight: 600;">Cost</td>
+                                    <td style="padding: 0.75rem;">Free</td>
+                                    <td style="padding: 0.75rem;">~$1 - $2 / month (Route 53 fee + minimal transfer)</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-hover);">
+                                    <td style="padding: 0.75rem; font-weight: 600;">Setup Time</td>
+                                    <td style="padding: 0.75rem;">~5 Minutes</td>
+                                    <td style="padding: 0.75rem;">~60 Minutes (Initial config)</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-hover);">
+                                    <td style="padding: 0.75rem; font-weight: 600;">Deployment</td>
+                                    <td style="padding: 0.75rem;">git push (Automatic)</td>
+                                    <td style="padding: 0.75rem;">aws s3 sync (Manual or via CI/CD pipeline)</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-hover);">
+                                    <td style="padding: 0.75rem; font-weight: 600;">SSL Certificate</td>
+                                    <td style="padding: 0.75rem;">Automatic (Let's Encrypt)</td>
+                                    <td style="padding: 0.75rem;">Automatic (ACM)</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-hover);">
+                                    <td style="padding: 0.75rem; font-weight: 600;">Global CDN</td>
+                                    <td style="padding: 0.75rem;">Yes (Fastly/Highwinds backbone)</td>
+                                    <td style="padding: 0.75rem;">Yes (Amazon CloudFront Edge Network)</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-hover);">
+                                    <td style="padding: 0.75rem; font-weight: 600;">Cache Control</td>
+                                    <td style="padding: 0.75rem;">Limited / Managed</td>
+                                    <td style="padding: 0.75rem;">Full Control (Custom TTLs)</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-hover);">
+                                    <td style="padding: 0.75rem; font-weight: 600;">Server-Side Logic</td>
+                                    <td style="padding: 0.75rem;">No (Static Only)</td>
+                                    <td style="padding: 0.75rem;">No (Static Only) unless using Lambda@Edge</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.75rem; font-weight: 600;">Best For</td>
+                                    <td style="padding: 0.75rem;">Personal Portfolios, Open Source Docs</td>
+                                    <td style="padding: 0.75rem;">High-Traffic Marketing Sites, Enterprise Apps</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2>Fazit: Warum ich beide nutze</h2>
+                    <p>Für ein leichtes Portfolio wie dieses ist <strong>GitHub Pages technisch ausreichend</strong>. Es ist schnell, sicher und kostenlos.</p>
+
+                    <p>Ich habe mich jedoch entschieden, die <strong>AWS S3 + CloudFront</strong>-Setup beizubehalten, aus drei Gründen:</p>
+                    <ol>
+                        <li><strong>Kompetenznachweis:</strong> Als Ingenieur, der "Cloud Hosting"-Dienste anbietet, beweist die Nutzung von AWS, dass ich die zugrundeliegende Infrastruktur verstehe. Ich kann AWS-Dienste nicht verkaufen, wenn ich sie nicht selbst nutze.</li>
+                        <li><strong>Lernkurve:</strong> Die Verwaltung von S3-Bucket-Policies und CloudFront-Distributionen zwingt mich dazu, zu verstehen, wie das Internet tatsächlich funktioniert (DNS-Propagation, SSL-Handshakes, Caching-Header).</li>
+                        <li><strong>Skalierbarkeit:</strong> Wenn diese Site plötzlich viral geht oder ich schwere Assets hinzufüge, wird die AWS-Architektur skalieren, ohne dass ich etwas anfassen muss. GitHub Pages hat Nutzungsgrenzen, die einen plötzlichen Traffic-Anstieg einschränken könnten.</li>
+                    </ol>
+                    
+                    <div class="highlight-box">
+                        <p><strong>Fazit:</strong> Wenn Sie anfangen, nutzen Sie <strong>GitHub Pages</strong>. Es entfernt Reibungsverluste. Aber wenn Sie lernen wollen, wie "Big Tech"-Unternehmen statische Inhalte im großen Maßstab bereitstellen, bauen Sie den AWS-Stack. Es verwandelt eine einfache Website in eine Lektion in verteilten Systemen.</p>
+                    </div>
+                </div>
+
+                <!-- English Content -->
+                <div data-lang="en">
+                    <p>When I built my portfolio website, I faced a common developer dilemma: How do I host a lightweight, static website (HTML, CSS, and minimal JS) that is fast, secure, and professional?</p>
+                    
+                    <p>Since my portfolio consists mostly of text and code—no heavy video files or massive image galleries—I didn't need complex server-side processing. I needed a place to store files and serve them fast.</p>
+
+                    <p>To truly understand the trade-offs, I decided to deploy the **exact same codebase** to two different environments simultaneously:</p>
+                    <ol>
+                        <li><strong>GitHub Pages:</strong> The "Free & Easy" option.</li>
+                        <li><strong>AWS S3 + CloudFront:</strong> The "Professional & Scalable" option.</li>
+                    </ol>
+
+                    <p>Here is a detailed technical comparison of how both systems handle a lightweight static site.</p>
+
+                    <h2>The Contender 1: GitHub Pages (The Free Standard)</h2>
+                    <p>GitHub Pages is the go-to solution for open-source projects and personal portfolios. It is designed specifically for static sites.</p>
+
+                    <h3>How it works</h3>
+                    <p>You push your code to a GitHub repository. GitHub then looks for an `index.html` file (or a Jekyll build process) and serves it over HTTPS via their servers.</p>
+
+                    <h3>The Architecture</h3>
+                    <ul>
+                        <li><strong>Storage:</strong> Git Repository.</li>
+                        <li><strong>Server:</strong> GitHub's internal HTTP servers.</li>
+                        <li><strong>DNS:</strong> `username.github.io` (subdomain) or Custom Domain mapping.</li>
+                        <li><strong>SSL:</strong> Automatic (Let's Encrypt integration handled by GitHub).</li>
+                    </ul>
+
+                    <h3>Pros for a Lightweight Site</h3>
+                    <ul>
+                        <li><strong>Cost:</strong> $0. Truly free.</li>
+                        <li><strong>CI/CD:</strong> Built-in. Every `git push` to the `main` branch triggers an automatic deployment. It is the fastest workflow for iteration.</li>
+                        <li><strong>Setup:</strong> Takes less than 5 minutes. Enable "Pages" in repo settings, and you are done.</li>
+                    </ul>
+
+                    <h3>Cons</h3>
+                    <ul>
+                        <li><strong>Caching Control:</strong> You have limited control over HTTP cache headers. GitHub sets its own defaults, which might not be optimal for specific asset versioning strategies.</li>
+                        <li><strong>Jekyll Interference:</strong> If you don't use a `.nojekyll` file, GitHub might try to process your site through Jekyll (a Ruby static site generator), which can mess with folder structures or filenames starting with underscores.</li>
+                        <li><strong>Branding:</strong> While you can use a custom domain, the underlying infrastructure is visibly "GitHub".</li>
+                    </ul>
+
+                    <h2>The Contender 2: AWS S3 + CloudFront (The Enterprise Stack)</h2>
+                    <p>For the production version of my site, I used Amazon Web Services (AWS). This is not just "hosting"; it is infrastructure-as-code. For a static site, we need four specific services working together.</p>
+
+                    <h3>1. AWS S3 (Simple Storage Service)</h3>
+                    <p><strong>Function:</strong> Object Storage.<br>
+                    S3 is not a traditional file system; it is an object store. It stores the actual files (`index.html`, `styles.css`, `scripts.js`).</p>
+                    <ul>
+                        <li><strong>Configuration:</strong> I created a "Public Bucket" and uploaded my files.</li>
+                        <li><strong>Static Website Hosting:</strong> I enabled the "Static Website Hosting" property on the bucket. This tells S3 to serve `index.html` when a user requests the root directory.</li>
+                        <li><strong>Durability:</strong> S3 offers 99.999999999% (11 9's) durability. My portfolio files are safer here than on my laptop's hard drive.</li>
+                    </ul>
+
+                    <h3>2. AWS CloudFront (Content Delivery Network)</h3>
+                    <p><strong>Function:</strong> Speed & Global Caching.<br>
+                    If users accessed my S3 bucket directly from Germany, the data would travel from AWS's Frankfurt region. That's fast, but CloudFront makes it instant.</p>
+                    <ul>
+                        <li><strong>Edge Locations:</strong> CloudFront copies my static files to hundreds of data centers (Edge Locations) around the world. When a user in Berlin requests the site, they get it from the Berlin edge, not the origin server.</li>
+                        <li><strong>Compression:</strong> CloudFront automatically compresses files (Gzip/Brotli) at the edge. Since my CSS and JS are text-based, they shrink significantly before reaching the user's browser.</li>
+                        <li><strong>HTTPS:</strong> CloudFront acts as the secure endpoint. It handles the SSL/TLS termination.</li>
+                    </ul>
+
+                    <h3>3. AWS ACM (AWS Certificate Manager)</h3>
+                    <p><strong>Function:</strong> SSL/TLS Certificates.<br>
+                    To have the "lock" icon (HTTPS) on a custom domain like `harisn.de`, you need a certificate.</p>
+                    <ul>
+                        <li><strong>Process:</strong> I requested a public certificate in ACM for `harisn.de` and `*.harisn.de`.</li>
+                        <li><strong>Validation:</strong> Since I manage my DNS via Route 53, I could validate the domain ownership automatically by adding a CNAME record. No manual email verification was needed.</li>
+                        <li><strong>Integration:</strong> Once issued, I simply attached this certificate to my CloudFront distribution. ACM handles the renewal automatically.</li>
+                    </ul>
+
+                    <h3>4. Amazon Route 53 (DNS)</h3>
+                    <p><strong>Function:</strong> Traffic Routing.<br>
+                    Route 53 is the phonebook of the internet. It tells browsers where to go when they type `harisn.de`.</p>
+                    <ul>
+                        <li><strong>Alias Records:</strong> Unlike standard CNAME records, Route 53 "Alias Records" can map a root domain (`harisn.de`) directly to a CloudFront distribution or S3 bucket.</li>
+                        <li><strong>Latency-Based Routing:</strong> If I had multiple servers, Route 53 could route users to the physically closest one. For my single site, it ensures high availability.</li>
+                    </ul>
+
+                    <h3>Pros for a Lightweight Site</h3>
+                    <ul>
+                        <li><strong>Performance:</strong> The combination of CloudFront caching and Brotli compression makes the site load incredibly fast, even on mobile networks.</li>
+                        <li><strong>Control:</strong> I can set granular cache rules (e.g., "Cache this image for a year, but check the HTML every hour").</li>
+                        <li><strong>Security:</strong> I can configure AWS WAF (Web Application Firewall) if I ever need to block specific traffic patterns.</li>
+                    </ul>
+
+                    <h3>Cons</h3>
+                    <ul>
+                        <li><strong>Cost:</strong> While S3 storage is pennies, Route 53 costs about $0.50/month for the hosted zone. Data transfer out is free up to a limit, but high traffic could incur costs.</li>
+                        <li><strong>Complexity:</strong> Setting up the S3 Bucket Policy, CloudFront Origin, and ACM validation takes about an hour compared to GitHub's 5 minutes.</li>
+                    </ul>
+
+                                        <h2 id="vergleich">The Comparison</h2>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; color: var(--text-secondary);">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--border); text-align: left;">
+                                    <th style="padding: 0.75rem; color: var(--text-main); width: 30%;">Feature</th>
+                                    <th style="padding: 0.75rem; color: var(--text-main); width: 35%;">GitHub Pages</th>
+                                    <th style="padding: 0.75rem; color: var(--text-main); width: 35%;">AWS S3 + CloudFront</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid var(--border-hover);">
+                                    <td style="padding: 0.75rem; font-weight: 600;">Cost</td>
+                                    <td style="padding: 0.75rem;">Free</td>
+                                    <td style="padding: 0.75rem;">~$1 - $2 / month (Route 53 fee + minimal transfer)</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-hover);">
+                                    <td style="padding: 0.75rem; font-weight: 600;">Setup Time</td>
+                                    <td style="padding: 0.75rem;">~5 Minutes</td>
+                                    <td style="padding: 0.75rem;">~60 Minutes (Initial config)</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-hover);">
+                                    <td style="padding: 0.75rem; font-weight: 600;">Deployment</td>
+                                    <td style="padding: 0.75rem;">git push (Automatic)</td>
+                                    <td style="padding: 0.75rem;">aws s3 sync (Manual or via CI/CD pipeline)</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-hover);">
+                                    <td style="padding: 0.75rem; font-weight: 600;">SSL Certificate</td>
+                                    <td style="padding: 0.75rem;">Automatic (Let's Encrypt)</td>
+                                    <td style="padding: 0.75rem;">Automatic (ACM)</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-hover);">
+                                    <td style="padding: 0.75rem; font-weight: 600;">Global CDN</td>
+                                    <td style="padding: 0.75rem;">Yes (Fastly/Highwinds backbone)</td>
+                                    <td style="padding: 0.75rem;">Yes (Amazon CloudFront Edge Network)</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-hover);">
+                                    <td style="padding: 0.75rem; font-weight: 600;">Cache Control</td>
+                                    <td style="padding: 0.75rem;">Limited / Managed</td>
+                                    <td style="padding: 0.75rem;">Full Control (Custom TTLs)</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-hover);">
+                                    <td style="padding: 0.75rem; font-weight: 600;">Server-Side Logic</td>
+                                    <td style="padding: 0.75rem;">No (Static Only)</td>
+                                    <td style="padding: 0.75rem;">No (Static Only) unless using Lambda@Edge</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.75rem; font-weight: 600;">Best For</td>
+                                    <td style="padding: 0.75rem;">Personal Portfolios, Open Source Docs</td>
+                                    <td style="padding: 0.75rem;">High-Traffic Marketing Sites, Enterprise Apps</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2>The Verdict: Why I Use Both</h2>
+                    <p>For a lightweight portfolio like this, **GitHub Pages is technically sufficient**. It is fast, secure, and free.</p>
+
+                    <p>However, I chose to maintain the **AWS S3 + CloudFront** setup for three reasons:</p>
+                    <ol>
+                        <li><strong>Demonstrating Skill:</strong> As an engineer offering "Cloud Hosting" services, using AWS proves I understand the underlying infrastructure. I can't sell AWS services if I don't use them myself.</li>
+                        <li><strong>Learning Curve:</strong> Managing S3 bucket policies and CloudFront distributions forces me to understand how the internet actually works (DNS propagation, SSL handshakes, caching headers).</li>
+                        <li><strong>Scalability:</strong> If this site suddenly goes viral or I add heavy assets, the AWS architecture will scale without me touching a thing. GitHub Pages has usage limits that might restrict a sudden spike in traffic.</li>
+                    </ol>
+
+                    <div class="highlight-box">
+                        <p><strong>Conclusion:</strong> If you are starting out, go with **GitHub Pages**. It removes friction. But if you want to learn how the "Big Tech" companies serve static content at scale, build the AWS stack. It turns a simple website into a lesson in distributed systems.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AI Disclosure Footer -->
+            <div class="ai-disclosure">
+                <p>
+                    <span data-lang="de">
+                        <strong>Technischer Hinweis:</strong> Dieser Blogpost wurde mit Unterstützung von GLM-4.7 verfasst.
+                    </span>
+                    <span data-lang="en">
+                        <strong>Technical Note:</strong> This blog post was written with assistance from GLM-4.7.
+                    </span>
+                </p>
+            </div>
+
+            <a href="index.html#notizbuch" class="back-link">
+                <span>←</span>
+                <span data-lang="de">Zurück zum Notizbuch</span>
+                <span data-lang="en">Back to Notebook</span>
+            </a>
+        </article>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Haris Naeem. <span data-lang="de">Alle Rechte vorbehalten.</span><span data-lang="en">All rights reserved.</span></p>
+        
+        <!-- Social Links Section -->
+        <div class="social-links">
+            <a href="https://github.com/harisnae" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            
+            <a href="https://huggingface.co/harisnaeem" target="_blank" rel="noopener noreferrer" aria-label="HuggingFace" class="social-icon">
+                <span style="font-size: 20px;">🤗</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/haris-naeem-6082ab395/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+
+            <a href="https://www.kaggle.com/harisna" target="_blank" rel="noopener noreferrer" aria-label="Kaggle" class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 22h20L12 2z"></path></svg>
+            </a>
+
+            <a href="https://wa.me/4915167580931" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            </a>
+        </div>
+        
+        <div style="margin-top: 0.5rem; font-size: 0.8rem;">
+            <a href="impressum.html" style="margin: 0 10px; color: var(--text-muted);">
+                <span data-lang="de">Impressum</span>
+                <span data-lang="en">Imprint</span>
+            </a>
+            <a href="datenschutz.html" style="margin: 0 10px; color: var(--text-muted);">
+                <span data-lang="de">Datenschutzerklärung</span>
+                <span data-lang="en">Privacy</span>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<!-- External Scripts (Shared Only) -->
+<script src="scripts.js" defer></script>
+</body>
+</html>

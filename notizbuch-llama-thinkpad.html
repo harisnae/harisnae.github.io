@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ein ehrlicher Erfahrungsbericht über lokale LLMs auf bescheidener Hardware - Llama auf einem alten ThinkPad T480">
+    <meta name="author" content="Haris Naeem">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- SEO & Social Media Meta Tags -->
+    <meta property="og:title" content="Llama auf einem alten Thinkpad - Haris Naeem">
+    <meta property="og:description" content="Ein ehrlicher Erfahrungsbericht über lokale LLMs auf bescheidener Hardware">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="de_DE">
+
+    <title>Llama auf einem alten Thinkpad | GLM-4.7</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Blog Post Specific Styles -->
+
+</head>
+<body data-active-lang="de">
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <a href="index.html" class="nav-name">Haris Naeem</a>
+        
+        <div class="nav-links">
+            <a href="index.html#leistungen" class="nav-link">
+                <span data-lang="de">Leistungen</span>
+                <span data-lang="en">Services</span>
+            </a>
+            <a href="index.html#projekte" class="nav-link">
+                <span data-lang="de">Projekte</span>
+                <span data-lang="en">Projects</span>
+            </a>
+            <a href="index.html#notizbuch" class="nav-link">
+                <span data-lang="de">Notizbuch</span>
+                <span data-lang="en">Notebook</span>
+            </a>
+            <a href="index.html#kooperation" class="nav-link">
+                <span data-lang="de">Preise</span>
+                <span data-lang="en">Pricing</span>
+            </a>
+            <a href="index.html#kontakt" class="nav-link">
+                <span data-lang="de">Kontakt</span>
+                <span data-lang="en">Contact</span>
+            </a>
+
+            <div class="nav-lang-switch">
+                <button id="lang-toggle" aria-label="Change Language">EN</button>
+            </div>
+        </div>
+
+        <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- BLOG POST CONTENT -->
+    <section class="section-spacer">
+        <div class="container">
+            <article class="blog-post">
+                
+                <header class="blog-header">
+                    <div class="blog-meta">
+                        <span class="blog-meta-item">
+                            <span data-lang="de">Datum:</span>
+                            <span data-lang="en">Date:</span>
+                            <time datetime="2026-04-05">05. April 2026</time>
+                        </span>
+                        <span class="blog-meta-item">
+                            <span class="blog-category">
+                                <span data-lang="de">AI & Hardware</span>
+                                <span data-lang="en">AI & Hardware</span>
+                            </span>
+                        </span>
+                        <span class="blog-meta-item">
+                            <span data-lang="de">Lesezeit:</span>
+                            <span data-lang="en">Read time:</span>
+                            <span data-lang="de">5 Minuten</span>
+                            <span data-lang="en">5 minutes</span>
+                        </span>
+                    </div>
+
+                    <h1 class="blog-title">
+                        <span data-lang="de">Llama auf einem alten Thinkpad: Was geht, was nicht geht</span>
+                        <span data-lang="en">Llama on an Old Thinkpad: What Works, What Doesn't</span>
+                    </h1>
+
+                    <p class="blog-subtitle">
+                        <span data-lang="de">Ein ehrlicher Erfahrungsbericht über lokale LLMs auf bescheidener Hardware.</span>
+                        <span data-lang="en">An honest experience report about local LLMs on modest hardware.</span>
+                    </p>
+                </header>
+
+                <div class="blog-content">
+                    <!-- German Content -->
+                    <div data-lang="de">
+                        <p>In einer Welt, in der jeder über H100 GPUs und riesige Cluster redet, wollte ich wissen: Was passiert, wenn man den Trend in die entgegengesetzte Richtung treibt? Kann man moderne Large Language Models (LLMs) auf Hardware laufen lassen, die eigentlich schon Rente hat?</p>
+
+                        <p>Ich habe mir meinen alten Lenovo ThinkPad T480 vorgenommen. Ein Arbeitstier aus dem Jahr 2018. Keine dedizierte Grafikkarte, kein Tensor-Core-Schnickschnack. Nur CPU, RAM und viel Geduld.</p>
+
+                        <p>Hier ist mein ehrlicher Erfahrungsbericht.</p>
+
+                        <h2>Die Spezifikationen: Der Underdog</h2>
+                        <p>Bevor wir in die Ergebnisse eintauchen, hier der "Gegner":</p>
+
+                        <div class="spec-box">
+                            <h4>Lenovo ThinkPad T480</h4>
+                            <div class="spec-list">
+                                <div class="spec-item">
+                                    <span class="spec-label">CPU</span>
+                                    <span class="spec-value">Intel Core i5-8250U</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">RAM</span>
+                                    <span class="spec-value">16 GB DDR4</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">GPU</span>
+                                    <span class="spec-value">Intel UHD 620</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Speicher</span>
+                                    <span class="spec-value">500 GB NVMe SSD</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Das ist keine Hardware für Deep Learning Training. Aber für Inference (das Anwenden des Modells) reicht es oft – wenn man weiß, wie man die Modelle schrumpft.</p>
+
+                        <h2>Was geht: Quantisierung ist der Schlüssel</h2>
+                        <p>Das große Zauberwort heißt <strong>Quantisierung</strong>. Wer LLMs lokal laufen lassen will, kommt an llama.cpp (oder Ollama als Frontend) nicht vorbei. Diese Tools wandeln die Fließkommazahlen der Modelle (FP16) in ganze Zahlen (z.B. 4-Bit oder 8-Bit Integer) um.</p>
+
+                        <p>Das Ergebnis: Das Modell wird zwar minimal "dümmer", aber der Speicherbedarf und die Rechenleistung drastisch sinken.</p>
+
+                        <h3>Mein Setup</h3>
+                        <p>Ich habe Llama 3 (8B) in einer 4-Bit-Quantisierung getestet.</p>
+                        <ul>
+                            <li><strong>Modellgröße:</strong> Ca. 5 GB auf der Festplatte</li>
+                            <li><strong>RAM-Verbrauch:</strong> Ca. 6-7 GB im RAM</li>
+                            <li><strong>Performance:</strong> Auf der CPU erreichte ich ca. 3 bis 5 Token pro Sekunde</li>
+                        </ul>
+
+                        <div class="highlight-box">
+                            <p><strong>Das Fazit:</strong> Es ist erstaunlich, dass es überhaupt funktioniert! Für Chat-Bot-Interaktionen, Zusammenfassungen oder Brainstorming ist diese Geschwindigkeit akzeptabel. Man liest schneller, als der Thinkpad schreiben kann, aber für einen "gedanklichen Partner" reicht es völlig aus.</p>
+                        </div>
+
+                        <p>Besonders gut liefen kleinere Modelle wie Phi-3 Mini oder Gemma 2B. Hier erreichte ich fast 8-10 Token/Sekunde, was sich schon fast flüssig anfühlt.</p>
+
+                        <h2>Was nicht geht: Die Grenzen der Geduld</h2>
+                        <p>Natürlich gibt es Gründe, warum Leute Tausende von Euro für GPUs ausgeben. Auf dem T480 stieß ich schnell an harte Grenzen.</p>
+
+                        <h3>1. Kontext-Fenster (Context Window)</h3>
+                        <p>Je mehr Text du dem Modell als Vorlage gibst (Prompt), desto langsamer wird es. Bei einem Kontext von 4.000 oder 8.000 Token merkt man deutlich, wie die Generierung ins Schleudern gerät. Das Analysieren ganzer PDF-Dokumente ist hier eine Übung in Zen-Meister-Geduld.</p>
+
+                        <h3>2. Code-Generierung</h3>
+                        <p>Lokale Modelle sind gut im Schreiben von Text, aber beim Code-Generieren scheitert die CPU oft an der Logik-Prüfung. Ich habe versucht, einfache Python-Skripte schreiben zu lassen. Das Ergebnis war oft Syntax-korrekt, aber logisch unsinnig. Größere Modelle (wie Llama 3 70B) wären hier besser, aber die lassen sich auf 16 GB RAM schlichtweg nicht laden.</p>
+
+                        <h3>3. Multimodalität (Bilder)</h3>
+                        <p>Vergiss es. Modelle, die Bilder verstehen (wie LLaVA), brauchen VRAM. Die Intel iGPU des T480 reicht nicht aus, um die Bildverarbeitung zu beschleunigen. Alles läuft über die CPU, was das System für mehrere Sekunden einfriert.</p>
+
+                        <h2>Die Hürden: Wärme und Lüfter</h2>
+                        <p>Ein Punkt, der oft vergessen wird: Die Physik.</p>
+
+                        <p>Wenn ein LLM auf der CPU rechnet, lastet es alle Kerne zu 100% aus. Mein ThinkPad klang nach wenigen Minuten wie ein abhebender Airbus. Die Lüfterdrehszahl schoss in die Höhe, und das Gehäuse wurde heiß.</p>
+
+                        <p>Das ist für kurze Sessions okay, aber ich würde nicht empfehlen, auf dieser Hardware stundenlang Dokumente zu analysieren. Der Stromverbrauch ist im Verhältnis zur Leistung auch nicht gerade ökologisch.</p>
+
+                        <h2>Fazit: Es ist möglich, aber mit Abstrichen</h2>
+                        <p>Warum sollte man das überhaupt tun? Warum nicht einfach ChatGPT im Browser nutzen?</p>
+
+                        <ul>
+                            <li><strong>Datenschutz.</strong> Mein Thinkpad hat kein Mikrofon, das auf "Hey Siri" wartet, und keine Daten verlassen mein Haus, wenn ich mit Llama chatte. Für sensible Notizen oder persönliche Journal-Einträge ist das Gold wert.</li>
+                            <li><strong>Kosten.</strong> Einmaliger Aufwand. Keine API-Gebühren pro Token.</li>
+                            <li><strong>Lerneffekt.</strong> Man versteht die Architektur der Modelle viel besser, wenn man gezwungen ist, sie zu optimieren.</li>
+                        </ul>
+
+                        <h2>Meine Empfehlung</h2>
+                        <p>Wenn du einen alten Laptop mit mindestens 16 GB RAM herumstehen hast:</p>
+                        <ul>
+                            <li>Probier es aus! Installiere Ollama oder LM Studio.</li>
+                            <li>Nimm kleine Modelle: phi-3, gemma:2b oder llama3:8b (4-bit).</li>
+                            <li>Nutze es als Zweit-Gehirn: Für Zusammenfassungen und Text-Korrekturen.</li>
+                        </ul>
+
+                        <div class="highlight-box">
+                            <p>Wenn du weniger als 16 GB RAM hast oder komplexe Aufgaben erledigen willst: Bleib bei Cloud-Lösungen. Der Frust ist sonst größer als der Gewinn.</p>
+                        </div>
+
+                        <p style="font-size: 1.125rem; font-weight: 600; color: var(--text-main); margin-top: 2rem;">
+                            Der Thinkpad ist nicht tot. Er hat einfach einen neuen Job bekommen.
+                        </p>
+                    </div>
+
+                    <!-- English Content -->
+                    <div data-lang="en">
+                        <p>In a world where everyone talks about H100 GPUs and massive clusters, I wanted to know: What happens if you push the trend in the opposite direction? Can you run modern Large Language Models (LLMs) on hardware that should already be retired?</p>
+
+                        <p>I took on my old Lenovo ThinkPad T480. A workhorse from 2018. No dedicated graphics card, no Tensor-Core gimmicks. Just CPU, RAM, and lots of patience.</p>
+
+                        <p>Here is my honest experience report.</p>
+
+                        <h2>The Specifications: The Underdog</h2>
+                        <p>Before we dive into the results, here's the "opponent":</p>
+
+                        <div class="spec-box">
+                            <h4>Lenovo ThinkPad T480</h4>
+                            <div class="spec-list">
+                                <div class="spec-item">
+                                    <span class="spec-label">CPU</span>
+                                    <span class="spec-value">Intel Core i5-8250U</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">RAM</span>
+                                    <span class="spec-value">16 GB DDR4</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">GPU</span>
+                                    <span class="spec-value">Intel UHD 620</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Storage</span>
+                                    <span class="spec-value">500 GB NVMe SSD</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>This is not hardware for Deep Learning training. But for inference (applying the model), it's often enough – if you know how to shrink the models.</p>
+
+                        <h2>What Works: Quantization is Key</h2>
+                        <p>The magic word is <strong>quantization</strong>. Anyone who wants to run LLMs locally can't avoid llama.cpp (or Ollama as a frontend). These tools convert the model's floating-point numbers (FP16) into integers (e.g., 4-bit or 8-bit).</p>
+
+                        <p>The result: The model becomes minimally "dumber", but memory requirements and computing power drop drastically.</p>
+
+                        <h3>My Setup</h3>
+                        <p>I tested Llama 3 (8B) in 4-bit quantization.</p>
+                        <ul>
+                            <li><strong>Model Size:</strong> About 5 GB on disk</li>
+                            <li><strong>RAM Usage:</strong> About 6-7 GB in RAM</li>
+                            <li><strong>Performance:</strong> On CPU, I achieved about 3 to 5 tokens per second</li>
+                        </ul>
+
+                        <div class="highlight-box">
+                            <p><strong>The Verdict:</strong> It's amazing that it works at all! For chatbot interactions, summaries, or brainstorming, this speed is acceptable. You read faster than the ThinkPad can write, but for a "thought partner" it's completely sufficient.</p>
+                        </div>
+
+                        <p>Smaller models like Phi-3 Mini or Gemma 2B worked particularly well. Here I achieved almost 8-10 tokens/second, which feels almost fluid.</p>
+
+                        <h2>What Doesn't Work: The Limits of Patience</h2>
+                        <p>Of course, there are reasons why people spend thousands of euros on GPUs. On the T480, I quickly hit hard limits.</p>
+
+                        <h3>1. Context Window</h3>
+                        <p>The more text you give the model as a template (prompt), the slower it gets. With a context of 4,000 or 8,000 tokens, you can clearly notice the generation struggling. Analyzing entire PDF documents here is an exercise in Zen master patience.</p>
+
+                        <h3>2. Code Generation</h3>
+                        <p>Local models are good at writing text, but when it comes to code generation, the CPU often fails at logic checking. I tried having simple Python scripts written. The result was often syntactically correct, but logically nonsensical. Larger models (like Llama 3 70B) would be better here, but they simply can't be loaded on 16 GB RAM.</p>
+
+                        <h3>3. Multimodality (Images)</h3>
+                        <p>Forget it. Models that understand images (like LLaVA) need VRAM. The Intel iGPU of the T480 is not sufficient to accelerate image processing. Everything runs through the CPU, which freezes the system for several seconds.</p>
+
+                        <h2>The Hurdles: Heat and Fans</h2>
+                        <p>One point that's often forgotten: Physics.</p>
+
+                        <p>When an LLM computes on the CPU, it loads all cores to 100%. My ThinkPad sounded like a taking-off Airbus after just a few minutes. The fan speed shot up, and the case got hot.</p>
+
+                        <p>This is okay for short sessions, but I wouldn't recommend analyzing documents for hours on this hardware. The power consumption is also not exactly ecological in relation to the performance.</p>
+
+                        <h2>Conclusion: It's Possible, But With Compromises</h2>
+                        <p>Why do this at all? Why not just use ChatGPT in the browser?</p>
+
+                        <ul>
+                            <li><strong>Privacy.</strong> My ThinkPad doesn't have a microphone waiting for "Hey Siri", and no data leaves my house when I chat with Llama. For sensitive notes or personal journal entries, this is gold.</li>
+                            <li><strong>Cost.</strong> One-time expense. No API fees per token.</li>
+                            <li><strong>Learning Effect.</strong> You understand the model architecture much better when you're forced to optimize them.</li>
+                        </ul>
+
+                        <h2>My Recommendation</h2>
+                        <p>If you have an old laptop with at least 16 GB RAM lying around:</p>
+                        <ul>
+                            <li>Try it! Install Ollama or LM Studio.</li>
+                            <li>Take small models: phi-3, gemma:2b or llama3:8b (4-bit).</li>
+                            <li>Use it as a second brain: For summaries and text corrections.</li>
+                        </ul>
+
+                        <div class="highlight-box">
+                            <p>If you have less than 16 GB RAM or want to accomplish complex tasks: Stick with cloud solutions. Otherwise, the frustration is greater than the gain.</p>
+                        </div>
+
+                        <p style="font-size: 1.125rem; font-weight: 600; color: var(--text-main); margin-top: 2rem;">
+                            The ThinkPad is not dead. It just got a new job.
+                        </p>
+                    </div>
+                </div>
+                <!-- AI Disclosure Footer -->
+                <div class="ai-disclosure">
+                    <p>
+                        <span data-lang="de">
+                            <strong>Technischer Hinweis:</strong> Dieser Blogpost wurde mit Unterstützung von GLM-4.7 verfasst.
+                        </span>
+                        <span data-lang="en">
+                            <strong>Technical Note:</strong> This blog post was written with assistance from GLM-4.7.
+                        </span>
+                    </p>
+                </div>
+
+                <a href="index.html#notizbuch" class="back-link">
+                    <span>←</span>
+                    <span data-lang="de">Zurück zum Notizbuch</span>
+                    <span data-lang="en">Back to Notebook</span>
+                </a>
+            </article>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Haris Naeem. <span data-lang="de">Alle Rechte vorbehalten.</span><span data-lang="en">All rights reserved.</span></p>
+            
+                    <!-- Social Links Section -->
+        <div class="social-links">
+            <a href="https://github.com/harisnae" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-icon">
+                <!-- GitHub Icon (SVG) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            
+            <a href="https://huggingface.co/harisnaeem" target="_blank" rel="noopener noreferrer" aria-label="HuggingFace" class="social-icon">
+                <!-- HuggingFace Icon (Emoji or SVG path - using Emoji for simplicity as official SVG is complex) -->
+                <span style="font-size: 20px;">🤗</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/haris-naeem-6082ab395/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon">
+                <!-- LinkedIn Icon (SVG) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+
+            <a href="https://www.kaggle.com/harisna" target="_blank" rel="noopener noreferrer" aria-label="Kaggle" class="social-icon">
+                <!-- Kaggle Icon (SVG) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 22h20L12 2z"></path></svg>
+            </a>
+
+            <a href="https://wa.me/4915167580931" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-icon">
+                <!-- WhatsApp Icon (SVG) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            </a>
+        </div>
+            <div style="margin-top: 0.5rem; font-size: 0.8rem;">
+                <a href="impressum.html" style="margin: 0 10px; color: var(--text-muted);">
+                    <span data-lang="de">Impressum</span>
+                    <span data-lang="en">Imprint</span>
+                </a>
+                <a href="datenschutz.html" style="margin: 0 10px; color: var(--text-muted);">
+                    <span data-lang="de">Datenschutzerklärung</span>
+                    <span data-lang="en">Privacy</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External Scripts (Shared Only) -->
+    <script src="scripts.js" defer></script>
+</body>
+</html>

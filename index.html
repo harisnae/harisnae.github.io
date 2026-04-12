@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Webentwicklung, lokale KI-Infrastruktur und digitale Werkzeuge von Haris Naeem in Bad Harzburg, Niedersachsen">
+    <meta name="author" content="Haris Naeem">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- SEO & Social Media Meta Tags -->
+    <meta property="og:title" content="Haris Naeem - Webentwicklung & KI-Infrastruktur">
+    <meta property="og:description" content="Professionelle Websites, lokale KI-Lösungen und IT-Support im Harz und Niedersachsen">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_DE">
+
+    <title>Haris Naeem | Webentwicklung & KI-Infrastruktur</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-active-lang="de">
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+    <a href="index.html" class="nav-name">Haris Naeem</a>
+        
+        <div class="nav-links">
+            <a href="#leistungen" class="nav-link">
+                <span data-lang="de">Leistungen</span>
+                <span data-lang="en">Services</span>
+            </a>
+            <a href="#projekte" class="nav-link">
+                <span data-lang="de">Projekte</span>
+                <span data-lang="en">Projects</span>
+            </a>
+            <a href="#notizbuch" class="nav-link">
+                <span data-lang="de">Notizbuch</span>
+                <span data-lang="en">Notebook</span>
+            </a>
+            <a href="#kooperation" class="nav-link">
+                <span data-lang="de">Kooperation</span>
+                <span data-lang="en">Collaboration</span>
+            </a>
+            <a href="#kontakt" class="nav-link">
+                <span data-lang="de">Kontakt</span>
+                <span data-lang="en">Contact</span>
+            </a>
+            
+            <div class="nav-lang-switch">
+                <button id="lang-toggle" aria-label="Change Language">EN</button>
+            </div>
+        </div>
+
+        <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="container hero-content">
+            <span class="hero-tag">
+                <span data-lang="de">Bad Harzburg · Niedersachsen</span>
+                <span data-lang="en">Bad Harzburg · Lower Saxony</span>
+            </span>
+            
+            <h1>
+                <span data-lang="de">Webentwicklung, lokale KI-Infrastruktur und <span>digitale Werkzeuge</span>.</span>
+                <span data-lang="en">Web Development, Local AI Infrastructure, and <span>Digital Tools</span>.</span>
+            </h1>
+            
+            <div class="hero-body">
+                <p>
+                    <span data-lang="de">
+                        Ich bin Ingenieur und Webentwickler. Ich baue datenschutzorientierte Websites, 
+                        richte lokale KI‑Infrastruktur, Offline‑Tools und Browser‑KI ein und übernehme 
+                        Geräte‑Setup sowie Netzwerk‑Konfiguration – gern auch vor Ort.
+                    </span>
+                    <span data-lang="en">
+                        I am an engineer and web developer. I build privacy-focused websites, 
+                        set up local AI infrastructure, offline tools and browser-based AI, 
+                        and handle device setup and network configuration – I’m happy to do this on-site as well.
+                    </span>
+                </p>
+                <p>
+                    <span data-lang="de">Neben Technik lese ich englische Bücher, lerne Freestyle Dance und Klavier, 
+                    spiele Basketball und verbringe viel Zeit in Bibliotheken, um meine Skills zu vertiefen und 
+                    neue Tools zu entwickeln.</span>
+                    <span data-lang="en">Besides technology, I read English books, learn freestyle dance and the piano, 
+                    play basketball, and spend a lot of time in libraries to deepen my skills and develop new tools.</span>
+                </p>
+            </div>
+
+            <div class="pill-row">
+                <span class="pill">Web Development</span>
+                <span class="pill">AWS Hosting</span>
+                <span class="pill">Local AI</span>
+                <span class="pill">Linux / Windows</span>
+                <span class="pill">Networking</span>
+            </div>
+
+            <div class="cta-row">
+                <a href="#kontakt" class="btn btn-primary">
+                    <span data-lang="de">Projekt anfragen</span>
+                    <span data-lang="en">Request Project</span>
+                </a>
+                <a href="https://github.com/harisnae" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                    <span data-lang="de">GitHub ansehen</span>
+                    <span data-lang="en">View GitHub</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="leistungen" class="section-spacer">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">
+                    <span data-lang="de">Leistungen</span>
+                    <span data-lang="en">Services</span>
+                </span>
+                <h2 class="section-title">
+                    <span data-lang="de">Was ich anbiete</span>
+                    <span data-lang="en">What I Offer</span>
+                </h2>
+                <p class="section-sub">
+                    <span data-lang="de">Manche Leistungen erbringe ich remote, andere nur vor Ort im Harz und Niedersachsen.</span>
+                    <span data-lang="en">Some services are provided remotely, others only on-site in the Harz and Lower Saxony.</span>
+                </p>
+            </div>
+
+            <div class="service-grid">
+            
+                <!-- Full Width Card -->
+                <article class="card service-full" onmousemove="handleCardHover(event, this)">
+                    <div class="card-content">
+                        <div class="badge-row">
+                            <span class="badge badge-regional">
+                                <span data-lang="de">Nur vor Ort</span>
+                                <span data-lang="en">On-site Only</span>
+                            </span>
+                            <span class="badge badge-new">
+                                <span data-lang="de">Schwerpunkt</span>
+                                <span data-lang="en">Focus</span>
+                            </span>
+                        </div>
+                        <h3>
+                            <span data-lang="de">Lokale KI-Infrastruktur einrichten</span>
+                            <span data-lang="en">Setting up Local AI Infrastructure</span>
+                        </h3>
+                        <p style="max-width: 800px;">
+                            <span data-lang="de">
+                                Organisationen, die KI nutzen möchten, ohne Daten in die Cloud zu
+                                schicken, können Open-Source-Sprachmodelle direkt auf eigenen
+                                Rechnern betreiben. Ich richte das vollständig vor Ort ein —
+                                Betriebssystem, Modell, Benutzeroberfläche — und übergebe ein
+                                funktionsfähiges System.
+                            </span>
+                            <span data-lang="en">
+                                Organizations that want to use AI without sending data to the cloud
+                                can run open-source language models directly on their own machines.
+                                I set this up completely on-site — operating system, model, UI —
+                                and hand over a working system.
+                            </span>
+                        </p>
+
+                        <div class="examples-grid">
+                            <div class="example-box">
+                                <h4>
+                                    <span data-lang="de">Kleine Modelle</span>
+                                    <span data-lang="en">Small Models</span>
+                                </h4>
+                                <p>
+                                    <span data-lang="de">Browser-basierte Modelle (Whisper, MarianMT) laufen auch auf normalen Laptops — offline.</span>
+                                    <span data-lang="en">Browser-based models (Whisper, MarianMT) run on normal laptops too — offline.</span>
+                                </p>
+                            </div>
+                            <div class="example-box">
+                                <h4>
+                                    <span data-lang="de">Größere Modelle</span>
+                                    <span data-lang="en">Larger Models</span>
+                                </h4>
+                                <p>
+                                    <span data-lang="de">Auf Rechnern mit guter GPU: Llama, Mistral, Qwen über Ollama — lokal, privat, schnell.</span>
+                                    <span data-lang="en">On machines with good GPU: Llama, Mistral, Qwen via Ollama — local, private, fast.</span>
+                                </p>
+                            </div>
+                            <div class="example-box">
+                                <h4>
+                                    <span data-lang="de">Linux von Grund auf</span>
+                                    <span data-lang="en">Linux from Scratch</span>
+                                </h4>
+                                <p>
+                                    <span data-lang="de">Ubuntu-Installation, Treibereinrichtung, Modell-Download von HuggingFace — alles Open Source.</span>
+                                    <span data-lang="en">Ubuntu installation, driver setup, model download from HuggingFace — all open source.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <!-- Full Width Card Ends Here -->
+                
+                <!-- Half Width Cards -->
+                <!-- Card 1 -->
+                <article class="card" onmousemove="handleCardHover(event, this)">
+                    <div class="card-content">
+                        <div class="badge-row">
+                            <span class="badge badge-regional">
+                                <span data-lang="de">Nur vor Ort</span>
+                                <span data-lang="en">On-site Only</span>
+                            </span>
+                            <span class="badge badge-new">New</span>
+                        </div>
+                        <h3>
+                            <span data-lang="de">Geräte-Setup und IT-Support</span>
+                            <span data-lang="en">Device Setup & IT Support</span>
+                        </h3>
+                        <p>
+                            <span data-lang="de">
+                                Windows- oder Linux-Neuinstallation, Office, Treiber, Hardware-Check,
+                                Netzwerk-Verkabelung und Switches.
+                            </span>
+                            <span data-lang="en">
+                                Windows or Linux reinstall, Office, drivers, hardware check,
+                                network cabling and switches.
+                            </span>
+                        </p>
+                    </div>
+                </article>
+                
+                <!-- Card 2 -->
+                <article class="card" onmousemove="handleCardHover(event, this)">
+                    <div class="card-content">
+                        <div class="badge-row">
+                            <span class="badge badge-remote">Remote</span>
+                            <span class="badge badge-regional">
+                                <span data-lang="de">Vor Ort</span>
+                                <span data-lang="en">On-site</span>
+                            </span>
+                        </div>
+                        <h3>
+                            <span data-lang="de">Browser-KI und Offline-Werkzeuge</span>
+                            <span data-lang="en">Browser AI & Offline Tools</span>
+                        </h3>
+                        <p>
+                            <span data-lang="de">
+                                Apps für Übersetzung, Spracherkennung und Texterkennung — laufen
+                                komplett im Browser, ohne Internetverbindung, ohne Datenweitergabe.
+                            </span>
+                            <span data-lang="en">
+                                Apps for translation, speech recognition, and OCR — running
+                                completely in the browser, without internet, without data sharing.
+                            </span>
+                        </p>
+                    </div>
+                </article>
+                
+                <!-- Card 3 -->
+                <article class="card" onmousemove="handleCardHover(event, this)">
+                    <div class="card-content">
+                        <div class="badge-row">
+                            <span class="badge badge-remote">Remote</span>
+                            <span class="badge badge-regional">
+                              <span data-lang="de">Vor Ort</span>
+                              <span data-lang="en">On-site</span>
+                          </span>
+                        </div>
+                        <h3>
+                          <span data-lang="de">Modernes Cloud-Hosting & Domains</span>
+                          <span data-lang="en">Modern Cloud Hosting & Domains</span>
+                        </h3>
+                        <p>
+                            <span data-lang="de">
+                              Hochperformante Infrastruktur auf AWS (S3, CloudFront, Route 53, ACM). 
+                              Unterstützung bei lokalen Domains (Hetzner) und 
+                              datenschutzfreundlichen E-Mail-Lösungen (Tutanota).
+                            </span>
+                            <span data-lang="en">
+                              High-performance infrastructure on AWS (S3, CloudFront, Route 53, ACM). 
+                              Assistance with local domains (Hetzner) and 
+                              privacy-focused email solutions (Tutanota).
+                            </span>
+                        </p>
+                    </div>
+                </article>
+                
+                <!-- Card 4 -->
+                  <article class="card" onmousemove="handleCardHover(event, this)">
+                    <div class="card-content">
+                        <div class="badge-row">
+                          <span class="badge badge-remote">Remote</span>
+                          <span class="badge badge-regional">
+                              <span data-lang="de">Vor Ort</span>
+                              <span data-lang="en">On-site</span>
+                          </span>
+                    </div>
+                  <h3>
+                      <span data-lang="de">Web-Entwicklung & Wartung</span>
+                      <span data-lang="en">Web Development & Maintenance</span>
+                  </h3>
+                  <p>
+                    <span data-lang="de">
+                        Umsetzung von statischen Websites und kleineren Webanwendungen. 
+                        Unterstützung bei Content-Updates, Bugfixes und der Optimierung 
+                        bestehender Webprojekte.
+                    </span>
+                    <span data-lang="en">
+                        Implementation of static websites and small web applications. 
+                        Assistance with content updates, bug fixes, and optimization 
+                        of existing web projects.
+                    </span>
+                </p>
+            </div>
+          </article>
+
+            </div>
+        </div>
+    </section>
+    
+    
+<!-- PROJECTS SECTION -->
+<section id="projekte" class="section-spacer">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">
+                <span data-lang="de">Projekte</span>
+                <span data-lang="en">Projects</span>
+            </span>
+            <h2 class="section-title">
+                <span data-lang="de">Ausgewählte Open Source Arbeit</span>
+                <span data-lang="en">Selected Open Source Work</span>
+            </h2>
+            <p class="section-sub">
+                <span data-lang="de">Privatsphäre-fokussierte Tools, die direkt im Browser laufen.</span>
+                <span data-lang="en">Privacy-focused tools that run directly in the browser.</span>
+            </p>
+        </div>
+
+        <div class="project-grid">
+            <!-- Project 1: Multilingual Translator -->
+            <article class="project-card">
+                <div class="project-content">
+                    <h3>Multilingual Translator</h3>
+                    <p>
+                        <span data-lang="de">Ein Offline-Übersetzer, der Dutzende OPUS-MT Modelle (int8-quantisiert) direkt im Browser via ONNX ausführt. Kein Server, keine API-Schlüssel.</span>
+                        <span data-lang="en">An offline translator running dozens of OPUS-MT models (int8-quantized) directly in the browser via ONNX. No server, no API keys.</span>
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">Transformers.js</span>
+                        <span class="project-tag">ONNX</span>
+                        <span class="project-tag">OPUS-MT</span>
+                    </div>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/harisnae/multilingual-translator-offline" target="_blank" rel="noopener noreferrer" class="project-link">
+                        <span data-lang="de">Code ansehen</span>
+                        <span data-lang="en">View Code</span>
+                    </a>
+                    <a href="https://harisnae.github.io/multilingual-translator-offline/" target="_blank" rel="noopener noreferrer" class="project-link secondary">
+                        <span data-lang="de">Live Demo</span>
+                        <span data-lang="en">Live Demo</span>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Project 2: Transcribe ASR -->
+            <article class="project-card">
+                <div class="project-content">
+                    <h3>Transcribe ASR</h3>
+                    <p>
+                        <span data-lang="de">Automatische Spracherkennung im Browser, powered by Whisper (ONNX). Unterstützt Multilingual- und Englisch-Modelle mit feinkörnigen Dekodierungssteuerungen.</span>
+                        <span data-lang="en">Client-side Automatic Speech Recognition powered by Whisper (ONNX). Supports multilingual and English-only models with fine-grained decoding controls.</span>
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">Web Audio API</span>
+                        <span class="project-tag">Whisper</span>
+                        <span class="project-tag">ONNX</span>
+                    </div>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/harisnae/transcribe-asr" target="_blank" rel="noopener noreferrer" class="project-link">
+                        <span data-lang="de">Code ansehen</span>
+                        <span data-lang="en">View Code</span>
+                    </a>
+                    <a href="https://harisnae.github.io/transcribe-asr" target="_blank" rel="noopener noreferrer" class="project-link secondary">
+                        <span data-lang="de">Live Demo</span>
+                        <span data-lang="en">Live Demo</span>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+    
+
+    <!-- NOTEBOOK SECTION -->
+    <section id="notizbuch" class="section-spacer">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">
+                    <span data-lang="de">Notizbuch</span>
+                    <span data-lang="en">Notebook</span>
+                </span>
+                <h2 class="section-title">
+                    <span data-lang="de">Gedanken & Notizen</span>
+                    <span data-lang="en">Thoughts & Notes</span>
+                </h2>
+                <p class="section-sub">
+                    <span data-lang="de">Gelegentliche Notizen über das, was ich gerade lerne, baue oder denke.</span>
+                    <span data-lang="en">Occasional notes about what I'm currently learning, building, or thinking.</span>
+                </p>
+            </div>
+
+            <div class="notebook-list">
+            <!-- New Blog Post Entry: DNS & Email -->
+<a href="dns-email-einrichtung.html" class="entry" style="display: flex; align-items: baseline; gap: 1.5rem; padding: 1.5rem; background-color: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); transition: all 0.2s ease;">
+    <span class="entry-date">12. April 2026</span>
+    <div class="entry-content">
+        <h3 class="entry-title">
+            <span data-lang="de">DNS im Detail: E-Mail für eine Custom Domain einrichten</span>
+            <span data-lang="en">DNS Deep Dive: Setting up Email for a Custom Domain</span>
+        </h3>
+        <p class="entry-sub">
+            <span data-lang="de">Nameserver-Delegation an AWS Route 53 und die Konfiguration von MX, SPF, DKIM und DMARC für Tutanota.</span>
+            <span data-lang="en">Nameserver delegation to AWS Route 53 and configuring MX, SPF, DKIM, and DMARC for Tutanota.</span>
+        </p>
+    </div>
+</a>
+            <!-- Clickable Blog Post Entry -->
+<a href="github-vs-aws-s3-hosting.html" class="entry" style="display: flex; align-items: baseline; gap: 1.5rem; padding: 1.5rem; background-color: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); transition: all 0.2s ease;">
+    <span class="entry-date">12. April 2026</span>
+    <div class="entry-content">
+        <h3 class="entry-title">
+            <span data-lang="de">GitHub Pages vs. AWS S3: Ein technischer Vergleich</span>
+            <span data-lang="en">GitHub Pages vs. AWS S3: A Technical Comparison</span>
+        </h3>
+        <p class="entry-sub">
+            <span data-lang="de">Wie ich meine statische Portfolio-Website parallel auf GitHub (Kostenlos) und AWS (Hochperformant) hoste.</span>
+            <span data-lang="en">How I host my static portfolio website in parallel on GitHub (Free) and AWS (High Performance).</span>
+        </p>
+    </div>
+</a>
+            <!-- Clickable Blog Post Entry -->
+            <a href="meine-reise-zur-de-domain.html" class="entry" style="display: flex; align-items: baseline; gap: 1.5rem; padding: 1.5rem; background-color: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); transition: all 0.2s ease;">
+              <span class="entry-date">10. April 2026</span>
+              <div class="entry-content">
+                    <h3 class="entry-title">
+                     <span data-lang="de">Meine Reise zur .de Domain: Hinter den Kulissen von DENIC</span>
+                     <span data-lang="en">My Journey to a .de Domain: Behind the Scenes of DENIC</span>
+                    </h3>
+                <p class="entry-sub">
+                    <span data-lang="de">Wie ich harisn.de registriert habe und was die .de-Endung so besonders macht.</span>
+                    <span data-lang="en">How I registered harisn.de and what makes the .de extension so special.</span>
+                </p>
+            </div>
+          </a>
+
+                <!-- "View All" Link -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="archiv.html" class="btn btn-secondary" style="display: inline-flex;">
+                        <span data-lang="de">Alle Notizen ansehen</span>
+                        <span data-lang="en">View All Notes</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+            </div>
+        </div>
+    </section>
+
+<!-- COLLABORATION SECTION -->
+<section id="kooperation" class="section-spacer">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">
+                <span data-lang="de">Kooperation</span>
+                <span data-lang="en">Collaboration</span>
+            </span>
+            <h2 class="section-title">
+                <span data-lang="de">Portfolio-Aufbau & Kooperation</span>
+                <span data-lang="en">Portfolio Building & Cooperation</span>
+            </h2>
+            <p class="section-sub">
+                <span data-lang="de">Da ich derzeit meinen Bundesfreiwilligendienst absolviere, biete ich meine Dienstleistungen kostenlos an. Mein Ziel ist es, praktische Erfahrung zu sammeln, mein Portfolio zu erweitern und ehrliche Bewertungen auf LinkedIn zu erhalten.</span>
+                <span data-lang="en">As I am currently completing my Federal Volunteer Service, I am offering my services for free. My goal is to gain practical experience, expand my portfolio, and receive honest reviews on LinkedIn.</span>
+            </p>
+        </div>
+
+        <!-- Single Column Stacked Cards (Full Width) -->
+        <div style="display: flex; flex-direction: column; gap: 2rem;">
+            
+            <!-- CARD 1: THE OFFER (Always Visible) -->
+            <article class="collab-card">
+                <div class="badge-row" style="justify-content: center; margin-bottom: 1.5rem;">
+                    <span class="badge badge-free">100% Kostenlos</span>
+                </div>
+                
+                <h3 style="text-align: center; margin-bottom: 1.5rem;">
+                    <span data-lang="de">Warum ich das mache</span>
+                    <span data-lang="en">Why I am doing this</span>
+                </h3>
+                
+                <p style="text-align: center; max-width: 600px; margin: 0 auto 2rem auto;">
+                    <span data-lang="de">
+                        Ich möchte meine Fähigkeiten in realen Projekten unter Beweis stellen und Ihnen gleichzeitig helfen. 
+                        Es entstehen für Sie keine Kosten. Im Gegenzug bitte ich um Ihre Unterstützung meines beruflichen Wachstums.
+                    </span>
+                    <span data-lang="en">
+                        I want to prove my skills in real projects while helping you at the same time. 
+                        There are no costs for you. In return, I ask for your support in my professional growth.
+                    </span>
+                </p>
+
+                <div class="exchange-box" style="text-align: left;">
+                    <h4>
+                        <span data-lang="de">Der Austausch (Im Gegenzug)</span>
+                        <span data-lang="en">The Exchange (In Return)</span>
+                    </h4>
+                    <ul class="exchange-list">
+                        <li>
+                            <span data-lang="de">Ein LinkedIn-Empfehlungsschreiben über unsere Zusammenarbeit.</span>
+                            <span data-lang="en">A LinkedIn recommendation about our collaboration.</span>
+                        </li>
+                        <li>
+                            <span data-lang="de">Erlaubnis, das abgeschlossene Projekt hier in meinem Portfolio zu zeigen.</span>
+                            <span data-lang="en">Permission to showcase the completed project here in my portfolio.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 2.5rem; text-align: center;">
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
+                        <span data-lang="de">Interessiert? Lesen Sie unten, was ich konkret für Sie tun werde.</span>
+                        <span data-lang="en">Interested? Read below what I will specifically do for you.</span>
+                    </p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+                </div>
+            </article>
+
+            <!-- CARD 2: WEB DEVELOPMENT (Collapsible) -->
+            <article class="collab-card accordion-card">
+                <button class="accordion-header" onclick="toggleAccordion('web-content', this)" aria-expanded="false">
+                    <span style="display: flex; align-items: center; gap: 1rem;">
+                        <span class="badge badge-remote" style="margin:0;">Web</span>
+                        <h3 style="margin: 0;">
+                            <span data-lang="de">Webentwicklung</span>
+                            <span data-lang="en">Web Development</span>
+                        </h3>
+                    </span>
+                    <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                
+                <div id="web-content" class="accordion-content">
+                    <div style="padding-top: 1.5rem;">
+                        
+                        <!-- Web Dev Tasks -->
+                        <div class="task-category">
+                            <ul class="task-list bullets-arrow">
+                                <li>
+                                    <span data-lang="de">
+                                        <strong>Die Technologie:</strong> Ich erstelle eine <strong>moderne, statische Website</strong> (Handcrafted HTML/CSS/JS). 
+                                        Das bedeutet: Kein langsames WordPress, keine monatlichen Plugin-Kosten, sondern maximaler Performance, Sicherheit und Geschwindigkeit.
+                                    </span>
+                                    <span data-lang="en">
+                                        <strong>The Technology:</strong> I create a <strong>modern, static website</strong> (Handcrafted HTML/CSS/JS). 
+                                        This means: No slow WordPress, no monthly plugin costs, but maximum performance, security, and speed.
+                                    </span>
+                                </li>
+                                <li>
+                                    <span data-lang="de">
+                                        <strong>Hosting & Workflow (GitHub Pages):</strong> 
+                                        Wir nutzen GitHub Pages für das kostenlose Hosting. 
+                                        <br>• <strong>Der Prozess:</strong> Ich erstelle ein Projekt-Repository in <strong>Ihrem</strong> GitHub-Account (oder helfe Ihnen, eines zu erstellen). 
+                                        <br>• <strong>Ihr Vorteil:</strong> Sie behalten 100% die Kontrolle über den Code. Die Website gehört Ihnen.
+                                    </span>
+                                    <span data-lang="en">
+                                        <strong>Hosting & Workflow (GitHub Pages):</strong> 
+                                        We use GitHub Pages for free hosting. 
+                                        <br>• <strong>The Process:</strong> I create a project repository in <strong>your</strong> GitHub account (or help you create one). 
+                                        <br>• <strong>Your Benefit:</strong> You retain 100% control over the code. The website belongs to you.
+                                    </span>
+                                </li>
+                                <li>
+                                    <span data-lang="de">
+                                        <strong>Domain & SSL:</strong> Ich verbinde Ihre eigene Domain (z.B. `meine-firma.de`) mit der GitHub-Seite. 
+                                        Das SSL-Zertifikat (für das Schloss-Symbol im Browser) wird dabei automatisch und kostenlos von GitHub konfiguriert.
+                                    </span>
+                                    <span data-lang="en">
+                                        <strong>Domain & SSL:</strong> I connect your own domain (e.g., `example.com`) to the GitHub site. 
+                                        The SSL certificate (for the lock icon in the browser) is configured automatically and free of charge by GitHub.
+                                    </span>
+                                </li>
+                                <li>
+                                    <span data-lang="de">
+                                        <strong>E-Mail (Exklusiv):</strong> E-Mail-Dienste werden nicht über GitHub bereitgestellt. 
+                                        Ich kann jedoch helfen, eine professionelle E-Mail-Lösung (z.B. Tuta) separat einzurichten.
+                                    </span>
+                                    <span data-lang="en">
+                                        <strong>Email (Exclusive):</strong> Email services are not provided by GitHub. 
+                                        However, I can help set up a professional email solution (e.g., Tuta) separately.
+                                    </span>
+                                </li>
+                                <li>
+                                    <span data-lang="de">Responsive Design für optimale Darstellung auf Mobilgeräten und Desktops.</span>
+                                    <span data-lang="en">Responsive design for optimal display on mobile and desktop.</span>
+                                </li>
+                                <li>
+                                    <span data-lang="de">Grundlegende SEO-Optimierung (Meta-Tags, Struktur).</span>
+                                    <span data-lang="en">Basic SEO optimization (Meta tags, structure).</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- NESTED: Important Info for Web Dev -->
+                        <div style="margin-top: 2rem; background: var(--bg-surface-hover); padding: 1.5rem; border-radius: var(--radius-sm); border-left: 3px solid var(--accent);">
+                            <h5 style="margin: 0 0 1rem 0; font-size: 0.95rem; color: var(--accent); display: flex; align-items: center; gap: 0.5rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                                <span data-lang="de">Wichtige Infos vorab</span>
+                                <span data-lang="en">Important Info Upfront</span>
+                            </h5>
+                            <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                                <li style="margin-bottom: 0.5rem;">
+                                    <span data-lang="de"><strong>Stack:</strong> Ich baue keine WordPress, Wix, Squarespace oder Shopify-Seiten. Ich nutze Modern Semantic HTML5, CSS3 und Vanilla JavaScript.</span>
+                                    <span data-lang="en"><strong>Stack:</strong> I do not build WordPress, Wix, Squarespace or Shopify sites. I use Modern Semantic HTML5, CSS3, and Vanilla JavaScript.</span>
+                                </li>
+                                <li style="margin-bottom: 0.5rem;">
+                                    <span data-lang="de"><strong>Hosting:</strong> Wir nutzen GitHub Pages. Ich erstelle das Repository in <strong>Ihrem</strong> Account, damit Sie den Code besitzen.</span>
+                                    <span data-lang="en"><strong>Hosting:</strong> We use GitHub Pages. I create the repository in <strong>your</strong> account so you own the code.</span>
+                                </li>
+                                <li>
+                                    <span data-lang="de"><strong>Voraussetzung:</strong> Wenn Sie kein GitHub haben, helfe ich Ihnen, eines in 2 Minuten kostenlos zu erstellen.</span>
+                                    <span data-lang="en"><strong>Requirement:</strong> If you don't have GitHub, I will help you create one for free in 2 minutes.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </article>
+
+            <!-- CARD 3: LOCAL AI (Collapsible) -->
+            <article class="collab-card accordion-card">
+                <button class="accordion-header" onclick="toggleAccordion('ai-content', this)" aria-expanded="false">
+                    <span style="display: flex; align-items: center; gap: 1rem;">
+                        <span class="badge badge-regional" style="margin:0;">AI</span>
+                        <h3 style="margin: 0;">
+                            <span data-lang="de">Lokale KI-Infrastruktur</span>
+                            <span data-lang="en">Local AI Infrastructure</span>
+                        </h3>
+                    </span>
+                    <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                
+                <div id="ai-content" class="accordion-content">
+                    <div style="padding-top: 1.5rem;">
+                        
+                        <!-- AI Tasks -->
+                        <div class="task-category">
+                            <ul class="task-list bullets-arrow">
+                                <li>
+                                    <span data-lang="de">
+                                        <strong>Tool-Stack & Deployment:</strong> 
+                                        Ich bringe Erfahrung mit den etablierten Standards mit (<strong>Ollama</strong>, <strong>LM Studio</strong>, <strong>text-generation-webui</strong>, <strong>llama.cpp</strong>). 
+                                        Darüber hinaus kann ich moderne Produktions-Stacks wie <strong>vLLM</strong> (für hohen Durchsatz), <strong>LocalAI</strong> (OpenAI-kompatible Server) oder containerisierte Lösungen via <strong>Docker Model Runner</strong> einrichten.
+                                    </span>
+                                    <span data-lang="en">
+                                        <strong>Tool Stack & Deployment:</strong> 
+                                        I bring experience with established standards (<strong>Ollama</strong>, <strong>LM Studio</strong>, <strong>text-generation-webui</strong>, <strong>llama.cpp</strong>). 
+                                        Additionally, I can set up modern production stacks like <strong>vLLM</strong> (for high throughput), <strong>LocalAI</strong> (OpenAI-compatible servers), or containerized solutions via <strong>Docker Model Runner</strong>.
+                                    </span>
+                                </li>
+                                <li>
+                                    <span data-lang="de">
+                                        <strong>OS-Szenarien (Linux vs. Windows/Mac):</strong> 
+                                        <br>• <strong>Linux von Grund auf:</strong> Installation von Ubuntu (Server/Desktop), NVIDIA-Treiber (CUDA/ROCm) und Backend-Setup für maximale Performance.
+                                        <br>• <strong>Bestehendes OS:</strong> Nahtlose Integration in Ihre aktuelle Windows- oder macOS-Umgebung mit passenden GUIs oder CLI-Tools.
+                                    </span>
+                                    <span data-lang="en">
+                                        <strong>OS Scenarios (Linux vs. Windows/Mac):</strong> 
+                                        <br>• <strong>Linux from Scratch:</strong> Installation of Ubuntu (Server/Desktop), NVIDIA drivers (CUDA/ROCm), and backend setup for maximum performance.
+                                        <br>• <strong>Existing OS:</strong> Seamless integration into your current Windows or macOS environment with suitable GUIs or CLI tools.
+                                    </span>
+                                </li>
+                                <li>
+                                    <span data-lang="de">
+                                        <strong>Modell-Optimierung:</strong> 
+                                        Auswahl und Download der passenden Modelle von HuggingFace. Nutzung von <strong>Quantisierung</strong> (4-bit/8-bit via AWQ/GPTQ/BitsAndBytes), um große Modelle (z.B. Llama-3.1-70B) auch auf Hardware mit begrenztem VRAM nutzbar zu machen.
+                                    </span>
+                                    <span data-lang="en">
+                                        <strong>Model Optimization:</strong> 
+                                        Selection and download of suitable models from HuggingFace. Utilization of <strong>Quantization</strong> (4-bit/8-bit via AWQ/GPTQ/BitsAndBytes) to make large models (e.g., Llama-3.1-70B) usable even on hardware with limited VRAM.
+                                    </span>
+                                </li>
+                                <li>
+                                    <span data-lang="de">
+                                        <strong>Interface & Workflow:</strong> 
+                                        Einrichtung von Web-UIs (Open WebUI, text-generation-webui) für Chat, Dokumenten-Upload (RAG) und Bildanalyse. Bei Bedarf Konfiguration von Fine-Tuning-Workflows (QLoRA) oder Adaptern.
+                                    </span>
+                                    <span data-lang="en">
+                                        <strong>Interface & Workflow:</strong> 
+                                        Setup of Web-UIs (Open WebUI, text-generation-webui) for chat, document upload (RAG), and image analysis. If needed, configuration of fine-tuning workflows (QLoRA) or adapters.
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- NESTED: Hardware Requirements Table -->
+                        <div style="margin-top: 2rem; background: var(--bg-surface-hover); padding: 1.5rem; border-radius: var(--radius-sm); border-left: 3px solid var(--accent);">
+                            <h5 style="margin: 0 0 1rem 0; font-size: 0.95rem; color: var(--accent); display: flex; align-items: center; gap: 0.5rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                                <span data-lang="de">Hardware-Leitfaden (Stand 2026)</span>
+                                <span data-lang="en">Hardware Guidelines (As of 2026)</span>
+                            </h5>
+                            
+                            <div style="overflow-x: auto;">
+                                <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; color: var(--text-secondary);">
+                                    <thead>
+                                        <tr style="border-bottom: 1px solid var(--border); text-align: left;">
+                                            <th style="padding: 0.5rem; color: var(--text-main);">Model Class</th>
+                                            <th style="padding: 0.5rem; color: var(--text-main);">Examples</th>
+                                            <th style="padding: 0.5rem; color: var(--text-main);">GPU VRAM (Min)</th>
+                                            <th style="padding: 0.5rem; color: var(--text-main);">System RAM</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr style="border-bottom: 1px solid var(--border-hover);">
+                                            <td style="padding: 0.5rem; font-weight: 600;">Small / Efficient</td>
+                                            <td style="padding: 0.5rem;">Llama 3 8B, Mistral 7B</td>
+                                            <td style="padding: 0.5rem;">6–16 GB</td>
+                                            <td style="padding: 0.5rem;">16–32 GB</td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid var(--border-hover);">
+                                            <td style="padding: 0.5rem; font-weight: 600;">Medium (Quantized)</td>
+                                            <td style="padding: 0.5rem;">gemma-4-26B, Mistral 8B</td>
+                                            <td style="padding: 0.5rem;">24–48 GB</td>
+                                            <td style="padding: 0.5rem;">32–64 GB</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 0.5rem; font-weight: 600;">Large (Single-GPU)</td>
+                                            <td style="padding: 0.5rem;">gemma-4-31B, Qwen3.5-35B</td>
+                                            <td style="padding: 0.5rem;">48–80 GB (A100/H100)</td>
+                                            <td style="padding: 0.5rem;">64–256 GB</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 0.5rem; font-weight: 600;">Very Large (Multi‑GPU)</td>
+                                            <td style="padding: 0.5rem;">GLM-5.1, gpt-oss-120b</td>
+                                            <td style="padding: 0.5rem;">160–320+ GB (A100/H100)</td>
+                                            <td style="padding: 0.5rem;">128–512+ GB</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+                                <span data-lang="de"><strong>Hinweis:</strong> Werte basieren auf 4-bit/8-bit Quantisierung. NVMe SSD wird für Model-Loading empfohlen.</span>
+                                <span data-lang="en"><strong>Note:</strong> Values assume 4-bit/8-bit quantization. NVMe SSD recommended for model loading.</span>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </article>
+
+            <!-- CARD 4: IT SUPPORT (Collapsible) -->
+            <article class="collab-card accordion-card">
+                <button class="accordion-header" onclick="toggleAccordion('support-content', this)" aria-expanded="false">
+                    <span style="display: flex; align-items: center; gap: 1rem;">
+                        <span class="badge badge-regional" style="margin:0;">IT</span>
+                        <h3 style="margin: 0;">IT-Support & Setup</h3>
+                    </span>
+                    <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                
+                <div id="support-content" class="accordion-content">
+                    <div style="padding-top: 1.5rem;">
+                        
+                        <!-- IT Support Tasks -->
+                        <div class="task-category">
+                            <ul class="task-list bullets-arrow">
+                                <li>
+                                    <span data-lang="de">
+                                        <strong>Büro-Umgebung (Office Setup):</strong> 
+                                        Kommissionierung von Arbeitsplatz-PCs: Installation oder Reset des Betriebssystems (Windows 10/11 Pro, Ubuntu Linux), Einrichtung von Benutzerkonten und Installation der Standard-Software-Stacks (Microsoft Office/LibreOffice, Browser, PDF-Tools, VPN-Clients).
+                                    </span>
+                                    <span data-lang="en">
+                                        <strong>Office Environment Setup:</strong> 
+                                        Commissioning of workstations: Installation or reset of the operating system (Windows 10/11 Pro, Ubuntu Linux), setup of user accounts, and installation of standard software stacks (Microsoft Office/LibreOffice, Browsers, PDF tools, VPN clients).
+                                    </span>
+                                </li>
+                                <li>
+                                    <span data-lang="de">
+                                        <strong>Netzwerk-Infrastruktur & Peripherie:</strong> 
+                                        physische Verkabelung (LAN), Konfiguration von Routern/Switches und Einrichtung von Netzwerkdruckern (Treiberinstallation, IP-Adressierung, Testdruck). Sicherstellung, dass alle Workstations Zugriff auf gemeinsame Ordner oder Drucker haben.
+                                    </span>
+                                    <span data-lang="en">
+                                        <strong>Network Infrastructure & Peripherals:</strong> 
+                                        Physical cabling (LAN), configuration of routers/switches, and setup of network printers (driver installation, IP addressing, test prints). Ensuring all workstations have access to shared folders or printers.
+                                    </span>
+                                </li>
+                                <li>
+                                    <span data-lang="de">
+                                        <strong>Workshop & Konferenz-Räume:</strong> 
+                                        Vorbereitung von Teilnehmer-Geräten (Laptops/Tablets): Konfiguration von WLAN-Zugang (SSID, Passwörter), Prüfung der LAN-Verbindung und Sicherstellung der Stromversorgung an allen Arbeitsplätzen. Einrichtung von Präsentationstechnik (Beamer/Displays mit HDMI/USB-C).
+                                    </span>
+                                    <span data-lang="en">
+                                        <strong>Workshop & Conference Rooms:</strong> 
+                                        Preparation of participant devices (Laptops/Tablets): Configuration of Wi-Fi access (SSID, passwords), checking LAN connectivity, and ensuring power supply at all workstations. Setup of presentation technology (Projectors/Displays via HDMI/USB-C).
+                                    </span>
+                                </li>
+                                <li>
+                                    <span data-lang="de">
+                                        <strong>Hardware-Check & Inbetriebnahme:</strong> 
+                                        Überprüfung der Hardware-Funktionalität (RAM, Festplatte, Grafik) vor der Auslieferung an Mitarbeiter oder Teilnehmer. Durchführung von Updates (Windows Update, Firmware) und Ersteinrichtung (OOBE - Out of Box Experience).
+                                    </span>
+                                    <span data-lang="en">
+                                        <strong>Hardware Check & Commissioning:</strong> 
+                                        Verification of hardware functionality (RAM, Disk, Graphics) before delivery to employees or participants. Execution of updates (Windows Update, Firmware) and initial setup (OOBE - Out of Box Experience).
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- NESTED: Important Info for IT Support -->
+                        <div style="margin-top: 2rem; background: var(--bg-surface-hover); padding: 1.5rem; border-radius: var(--radius-sm); border-left: 3px solid var(--accent);">
+                            <h5 style="margin: 0 0 1rem 0; font-size: 0.95rem; color: var(--accent); display: flex; align-items: center; gap: 0.5rem;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                                <span data-lang="de">Wichtige Infos vorab</span>
+                                <span data-lang="en">Important Info Upfront</span>
+                            </h5>
+                            <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                                <li style="margin-bottom: 0.5rem;">
+                                    <span data-lang="de"><strong>Datensicherung (Backup):</strong> Vor Neuinstallationen oder Resets müssen wichtige Daten gesichert werden. Ich unterstütze beim Prozess, aber die finale Verantwortung für die Datensicherheit liegt beim Kunden.</span>
+                                    <span data-lang="en"><strong>Data Backup:</strong> Important data must be backed up before reinstallations or resets. I assist with the process, but final responsibility for data security lies with the client.</span>
+                                </li>
+                                <li style="margin-bottom: 0.5rem;">
+                                    <span data-lang="de"><strong>Lizenzen:</strong> Der Kunde muss im Besitz gültiger Lizenzen für das Betriebssystem (Windows) und Anwendungssoftware (Office) sein. Ich installiere keine Raubkopien oder Crack-Software.</span>
+                                    <span data-lang="en"><strong>Licenses:</strong> The client must possess valid licenses for the operating system (Windows) and application software (Office). I do not install pirated or cracked software.</span>
+                                </li>
+                                <li>
+                                    <span data-lang="de"><strong>Servicegebiet:</strong> Vor-Ort-Termine sind nur im Harz / Niedersachsen möglich.</span>
+                                    <span data-lang="en"><strong>Service Area:</strong> On-site appointments are only possible in the Harz / Lower Saxony area.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </article>
+
+            <!-- FINAL CTA -->
+            <div style="text-align: center; margin-top: 1rem;">
+                <a href="#kontakt" class="btn btn-primary" style="width: 100%; max-width: 400px;">
+                    <span data-lang="de">Jetzt kostenlos anfragen</span>
+                    <span data-lang="en">Request for free now</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+        <!-- CONTACT SECTION -->
+    <section id="kontakt" class="section-spacer contact-section">
+        <div class="container">
+            <div class="contact-card">
+                <span class="section-label">
+                    <span data-lang="de">Kontakt</span>
+                    <span data-lang="en">Contact</span>
+                </span>
+                <h2 class="section-title">
+                    <span data-lang="de">Lassen Sie uns sprechen</span>
+                    <span data-lang="en">Let's talk</span>
+                </h2>
+                <p class="section-sub" style="margin: 1rem auto 2.5rem;">
+                    <span data-lang="de">Ich antworte auf Deutsch und Englisch. Wählen Sie Ihren bevorzugten Weg.</span>
+                    <span data-lang="en">I reply in German and English. Choose your preferred channel.</span>
+                </p>
+                
+                <div class="contact-links">
+<!-- Phone -->
+<a href="tel:+4915167580931" class="contact-link-item">
+    <div class="contact-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    </div>
+    <div class="contact-text">
+        <span class="contact-label">Phone</span>
+        <span class="contact-value">+49 151 675 80931</span>
+    </div>
+</a>
+
+<!-- Email -->
+<a href="mailto:info@harisn.de" class="contact-link-item">
+    <div class="contact-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+    </div>
+    <div class="contact-text">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">info@harisn.de</span>
+    </div>
+</a>
+
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/4915167580931" target="_blank" rel="noopener noreferrer" class="contact-link-item">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                        </div>
+                        <div class="contact-text">
+                            <span class="contact-label">WhatsApp</span>
+                            <span class="contact-value">Chat now</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+        <!-- FOOTER SECTION -->
+        <footer>
+        <!-- DEVELOPMENT DISCLOSURE -->
+    <section class="section-spacer" style="padding-bottom: 2rem; padding-top: 2rem;">
+        <div class="container">
+            <div style="background: var(--bg-surface-hover); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 2rem; text-align: center;">
+                <h4 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 1rem;">
+                    <span data-lang="de">Entwicklungsprozess & Werkzeuge</span>
+                    <span data-lang="en">Development Process & Tools</span>
+                </h4>
+                
+                <p style="font-size: 0.9rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 1.5rem auto;">
+                    <span data-lang="de">
+                        Dieser Portfolio-Website wurde unter Einsatz moderner KI-Modelle assistiert. 
+                        Der Code wurde vollständig validiert, auf Barrierefreiheit geprüft und auf AWS S3 gehostet.
+                    </span>
+                    <span data-lang="en">
+                        This portfolio website was built with assistance from modern LLMs. 
+                        All code has been validated for accessibility and hosted on AWS S3.
+                    </span>
+                </p>
+
+                <!-- Model Links -->
+                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                    <a href="https://huggingface.co/zai-org/GLM-4.7" target="_blank" rel="noopener noreferrer" class="project-link" style="font-size: 0.85rem;">GLM-4.7</a>
+                    <a href="https://huggingface.co/Qwen/Qwen3.5-397B-A17B" target="_blank" rel="noopener noreferrer" class="project-link" style="font-size: 0.85rem;">Qwen3.5</a>
+                    <a href="https://huggingface.co/mistralai/Devstral-2-123B-Instruct-2512" target="_blank" rel="noopener noreferrer" class="project-link" style="font-size: 0.85rem;">Devstral-2</a>
+                    <a href="https://www.anthropic.com/claude/sonnet" target="_blank" rel="noopener noreferrer" class="project-link secondary" style="font-size: 0.85rem;">Sonnet 4.6</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END OF DEVELOPMENT DISCLOSURE -->
+
+    <div class="container">
+        <p>&copy; 2026 Haris Naeem. <span data-lang="de">Alle Rechte vorbehalten.</span><span data-lang="en">All rights reserved.</span></p>
+        
+        <!-- Social Links Section -->
+        <div class="social-links">
+            <a href="https://github.com/harisnae" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-icon">
+                <!-- GitHub Icon (SVG) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            
+            <a href="https://huggingface.co/harisnaeem" target="_blank" rel="noopener noreferrer" aria-label="HuggingFace" class="social-icon">
+                <!-- HuggingFace Icon (Emoji or SVG path - using Emoji for simplicity as official SVG is complex) -->
+                <span style="font-size: 20px;">🤗</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/haris-naeem-6082ab395/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon">
+                <!-- LinkedIn Icon (SVG) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+
+            <a href="https://www.kaggle.com/harisna" target="_blank" rel="noopener noreferrer" aria-label="Kaggle" class="social-icon">
+                <!-- Kaggle Icon (SVG) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 22h20L12 2z"></path></svg>
+            </a>
+
+            <a href="https://wa.me/4915167580931" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-icon">
+                <!-- WhatsApp Icon (SVG) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            </a>
+        </div>
+
+        <div style="margin-top: 0.5rem; font-size: 0.8rem;">
+            <a href="impressum.html" style="margin: 0 10px; color: var(--text-muted);">
+                <span data-lang="de">Impressum</span>
+                <span data-lang="en">Imprint</span>
+            </a>
+            <a href="datenschutz.html" style="margin: 0 10px; color: var(--text-muted);">
+                <span data-lang="de">Datenschutzerklärung</span>
+                <span data-lang="en">Privacy</span>
+            </a>
+        </div>
+    </div>
+    </footer>
+<!-- END OF FOOTER SECTION -->
+    <!-- External Scripts -->
+    <script src="scripts.js" defer></script>
+    <script src="home.js" defer></script>
+</body>
+</html>

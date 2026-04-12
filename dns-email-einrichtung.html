@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Eine technische Anleitung zur Konfiguration von DNS in AWS Route 53 und dem Einrichten von Tutanota E-Mail für harisn.de.">
+    <meta name="author" content="Haris Naeem">
+    <meta name="theme-color" content="#0f172a">
+    
+    <!-- SEO & Social Media Meta Tags -->
+    <meta property="og:title" content="DNS im Detail: E-Mail einrichten - Haris Naeem">
+    <meta property="og:description" content="Schritt-für-Schritt: Nameserver ändern, AWS Route 53 Hosted Zone erstellen und Tutanota DNS Records konfigurieren.">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="de_DE">
+
+    <title>DNS im Detail: E-Mail einrichten | Haris Naeem</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body data-active-lang="de">
+
+<!-- NAVIGATION -->
+<nav class="nav">
+    <a href="index.html" class="nav-name">Haris Naeem</a>
+    
+    <div class="nav-links">
+        <a href="index.html#leistungen" class="nav-link">
+            <span data-lang="de">Leistungen</span>
+            <span data-lang="en">Services</span>
+        </a>
+        <a href="index.html#projekte" class="nav-link">
+            <span data-lang="de">Projekte</span>
+            <span data-lang="en">Projects</span>
+        </a>
+        <a href="index.html#notizbuch" class="nav-link">
+            <span data-lang="de">Notizbuch</span>
+            <span data-lang="en">Notebook</span>
+        </a>
+        <a href="index.html#kooperation" class="nav-link">
+            <span data-lang="de">Kooperation</span>
+            <span data-lang="en">Collaboration</span>
+        </a>
+        <a href="index.html#kontakt" class="nav-link">
+            <span data-lang="de">Kontakt</span>
+            <span data-lang="en">Contact</span>
+        </a>
+
+        <div class="nav-lang-switch">
+            <button id="lang-toggle" aria-label="Change Language">EN</button>
+        </div>
+    </div>
+
+    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</nav>
+
+<!-- BLOG POST CONTENT -->
+<section class="section-spacer">
+    <div class="container">
+        <article class="blog-post">
+            
+            <header class="blog-header">
+                <div class="blog-meta">
+                    <span class="blog-meta-item">
+                        <span data-lang="de">Datum:</span>
+                        <span data-lang="en">Date:</span>
+                        <time datetime="2026-05-20">20. Mai 2026</time>
+                    </span>
+                    <span class="blog-meta-item">
+                        <span class="blog-category">
+                            <span data-lang="de">DevOps & Infrastruktur</span>
+                            <span data-lang="en">DevOps & Infrastructure</span>
+                        </span>
+                    </span>
+                    <span class="blog-meta-item">
+                        <span data-lang="de">Lesezeit:</span>
+                        <span data-lang="en">Read time:</span>
+                        <span data-lang="de">10 Minuten</span>
+                        <span data-lang="en">10 minutes</span>
+                    </span>
+                </div>
+
+                <h1 class="blog-title">
+                    <span data-lang="de">DNS im Detail: E-Mail für eine Custom Domain einrichten</span>
+                    <span data-lang="en">DNS Deep Dive: Setting up Email for a Custom Domain</span>
+                </h1>
+
+                <p class="blog-subtitle">
+                    <span data-lang="de">Von Nameserver-Wechseln bis zu DKIM: Wie ich AWS Route 53 und Tutanota für harisn.de konfiguriert habe.</span>
+                    <span data-lang="en">From Nameserver Delegation to DKIM: How I configured AWS Route 53 and Tutanota for harisn.de.</span>
+                </p>
+            </header>
+
+            <div class="blog-content">
+                <!-- German Content -->
+                <div data-lang="de">
+                    <p>Als ich <strong>harisn.de</strong> registriert habe, habe ich nicht nur einen Namen gekauft; ich habe die Autorität erworben, festzulegen, wie das Internet meine digitale Präsenz findet. Aber ein Domain-Name ist ohne eine Landkarte nutzlos. Diese Landkarte ist das <strong>Domain Name System (DNS)</strong>.</p>
+
+                    <p>In meinen vorherigen Beiträgen habe ich über die Auswahl der Domain und die Wahl des Hostings (AWS vs. GitHub) gesprochen. Jetzt möchte ich den Kleber beschreiben, der alles zusammenhält: die Konfiguration von DNS-Einträgen in AWS Route 53 und das Einrichten eines sicheren E-Mail-Dienstes mit Tutanota.</p>
+
+                    <p>Dieser Prozess umfasst zwei distinct Phasen:</p>
+                    <ol>
+                        <li><strong>Die Kontrolle übernehmen:</strong> Verschieben der Domain von den Standard-Nameservern des Registrars zu AWS Route 53.</li>
+                        <li><strong>Die Dienste konfigurieren:</strong> Hinzufügen spezifischer Einträge für meine Website (CloudFront) und meine E-Mail (Tutanota).</li>
+                    </ol>
+
+                    <p>Hier ist die Schritt-für-Schritt-Reise, wie ich <code>harisn.de</code> konfiguriert habe.</p>
+
+                    <h2>Phase 1: Die Kontrolle übernehmen mit AWS Route 53</h2>
+                    <p>Wenn Sie eine .de-Domain bei einem Registrar (wie dem, den ich verwendet habe) registrieren, geben sie Ihnen nicht nur die Domain; sie weisen sie auch ihren eigenen Standard-Nameservern zu. Das sind die Server, die dem Internet zunächst sagen, wo es nach Ihrer Domain suchen soll.</p>
+
+                    <p>Da ich jedoch AWS für meine Hosting-Infrastruktur nutzen wollte, musste ich diese "Telefonbuch"-Autorität zu Amazon verlagern. Dies geschieht durch das Erstellen einer <strong>Hosted Zone</strong> in Route 53.</p>
+
+                    <h3>Schritt 1: Die Hosted Zone erstellen</h3>
+                    <p>In der AWS Route 53-Konsole habe ich eine neue Hosted Zone für <code>harisn.de</code> erstellt.</p>
+
+                    <p><strong>Was ist eine Hosted Zone?</strong><br>
+                    Stellen Sie sich eine Hosted Zone als Container für alle DNS-Einträge vor, die mit einer bestimmten Domain verknüpft sind. Sie enthält die Liste der Anweisungen wie "Die Website befindet sich unter dieser IP" oder "Senden E-Mails an diesen Server".</p>
+
+                    <p>Sobald ich diese Hosted Zone erstellt hatte, generierte AWS automatisch vier <strong>NS (Nameserver)</strong>-Einträge für mich. Diese sahen ungefähr so aus:</p>
+                    <ul>
+                        <li><code>ns-123.awsdns-12.com</code></li>
+                        <li><code>ns-456.awsdns-34.net</code></li>
+                        <li><code>ns-789.awsdns-56.org</code></li>
+                        <li><code>ns-000.awsdns-78.co.uk</code></li>
+                    </ul>
+
+                    <h3>Schritt 2: Der Registrar-Wechsel (Delegation)</h3>
+                    <p>Dies ist der kritische Schritt. Um AWS zur maßgeblichen Quelle für <code>harisn.de</code> zu machen, musste ich mich im Portal meines Domain-Registrars einloggen und die Nameserver aktualisieren.</p>
+
+                    <p>Ich habe die Standard-Nameservers des Registrars durch die vier von AWS bereitgestellten NS-Einträge ersetzt.</p>
+
+                    <p><strong>Warum ist das notwendig?</strong><br>
+                    Dieser Prozess wird <strong>Delegation</strong> genannt. Durch das Aktualisieren dieser Einträge beim Sage ich dem globalen Internet effektiv: "Wenn du etwas über <code>harisn.de</code> wissen willst, frag mich nicht mehr. Geh diese AWS-Server fragen."</p>
+
+                    <p>Sobald diese Änderung gespeichert war, konnte es überall zwischen wenigen Minuten und 48 Stunden dauern, bis sie weltweit propagiert ist. Während dieser Zeit konnte AWS verifizieren, dass ich die Domain besitze, weil ich die NS-Einträge kontrollierte, die zu ihnen zeigten.</p>
+
+                    <h2>Phase 2: Die Website konfigurieren (AWS-Einträge)</h2>
+                    <p>Mit der aktiven Hosted Zone und der Delegation konnte ich mit dem Hinzufügen von Einträgen beginnen. Die erste Priorität war meine Website.</p>
+
+                    <h3>Der Alias-Eintrag</h3>
+                    <p>Für meine statische Site, die auf AWS S3 und CloudFront gehostet wird, habe ich keinen Standard-A-Eintrag (der auf eine IP-Adresse zeigt) verwendet. Stattdessen habe ich einen <strong>Alias-Eintrag</strong> verwendet.</p>
+
+                    <ul>
+                        <li><strong>Name:</strong> <code>@</code> (dies repräsentiert die Root-Domain, <code>harisn.de</code>)</li>
+                        <li><strong>Typ:</strong> <code>A</code> (Alias)</li>
+                        <li><strong>Wert:</strong> Meine CloudFront-Distributions-ID (z.B. <code>d111111abcdef8.cloudfront.net</code>)</li>
+                    </ul>
+
+                    <p><strong>Warum ein Alias-Eintrag?</strong><br>
+                    AWS-Alias-Einträge sind speziell. Sie erlauben es einer Root-Domain (wie <code>harisn.de</code>), direkt auf AWS-Ressourcen (wie CloudFront oder S3) zu zeigen, ohne die zugrundeliegenden IP-Adressen preiszugeben. Sie sind in Route 53 außerdem kostenlos und werden automatisch aktualisiert, wenn sich die AWS-Ressource ändert.</p>
+
+                    <h2>Phase 3: E-Mail mit Tutanota einrichten</h2>
+                    <p>Mit der Web-Routing sortiert, war die nächste Herausforderung die E-Mail. Ich wollte <code>info@harisn.de</code> nutzen, aber ich wollte keinen eigenen Mailserver betreiben. Ich habe Tutanota wegen seines Fokus auf Verschlüsselung und Datenschutz gewählt.</p>
+
+                    <p>Das Einrichten einer Custom Domain bei Tutanota ist eine Partnerschaft. Tutanota stellt die Werte bereit, und ich muss sie in meine Route 53 Hosted Zone eintragen.</p>
+
+                    <h3>Schritt 1: Der Verifizierungs-Eintrag (TXT)</h3>
+                    <p>Bevor Tutanota mir erlaubt, E-Mails für <code>harisn.de</code> zu empfangen, müssen sie beweisen, dass ich die Domain tatsächlich besitze.</p>
+
+                    <p>Im Tutanota-Einrichtungsassistenten stellten sie einen spezifischen <strong>TXT-Eintrag</strong> bereit:</p>
+                    <ul>
+                        <li><strong>Name:</strong> <code>@</code></li>
+                        <li><strong>Typ:</strong> <code>TXT</code></li>
+                        <li><strong>Wert:</strong> <code>t-verify=xxxxxxxxxxxx</code> (ein eindeutiger Hash-String)</li>
+                    </ul>
+
+                    <p>Ich habe diesen Eintrag zu Route 53 hinzugefügt. Sobald gespeichert, überprüfen die Systeme von Tutanota regelmäßig mein DNS. Wenn sie diesen spezifischen String sehen, wissen sie, dass ich administrativen Zugriff auf <code>harisn.de</code> habe, und sie schalten die E-Mail-Konfiguration frei.</p>
+
+                    <h3>Schritt 2: Der MX-Eintrag (Mail Exchange)</h3>
+                    <p>Dies ist der wichtigste Eintrag für E-Mail. Er sagt dem Internet, wohin E-Mails gesendet werden sollen, die an <code>@harisn.de</code> adressiert sind.</p>
+
+                    <p>Tutanota stellte den folgenden MX-Eintrag bereit:</p>
+                    <ul>
+                        <li><strong>Name:</strong> <code>@</code></li>
+                        <li><strong>Typ:</strong> <code>MX</code></li>
+                        <li><strong>Wert:</strong> <code>mail.tutanota.de</code></li>
+                        <li><strong>Priorität:</strong> <code>10</code></li>
+                    </ul>
+
+                    <p><strong>Wie es funktioniert:</strong><br>
+                    Wenn jemand eine E-Mail an <code>info@harisn.de</code> sendet, schaut der Mailserver des Absenders den MX-Eintrag für <code>harisn.de</code> nach. Mein Route 53-Eintrag antwortet: "Senden Sie es an <code>mail.tutanota.de</code>." Die E-Mail wird dann an die Server von Tutanota zugestellt, wo sie in meinem Posteingang landet.</p>
+
+                    <h3>Schritt 3: Der SPF-Eintrag (TXT)</h3>
+                    <p>Spam ist ein riesiges Problem. Um zu verhindern, dass Spammer vorgeben, E-Mails von meiner Domain zu senden (Spoofing), benötige ich einen SPF-Eintrag (Sender Policy Framework).</p>
+
+                    <p>Tutanota stellte diesen TXT-Eintrag bereit:</p>
+                    <ul>
+                        <li><strong>Name:</strong> <code>@</code></li>
+                        <li><strong>Typ:</strong> <code>TXT</code></li>
+                        <li><strong>Wert:</strong> <code>v=spf1 include:spf.tutanota.de ~all</code></li>
+                    </ul>
+
+                    <p><strong>Was das bedeutet:</strong><br>
+                    Dieser Eintrag sagt der Welt: "Nur die Server, die in <code>spf.tutanota.de</code> aufgeführt sind, sind autorisiert, E-Mails im Namen von <code>harisn.de</code> zu senden. Wenn du eine E-Mail von <code>harisn.de</code> erhältst, die von woanders kam, lehne sie ab."</p>
+
+                    <h3>Schritt 4: DKIM-Einträge (CNAME)</h3>
+                    <p>SPF ist gut, aber es kann während der Übertragung gefälscht werden. DKIM (DomainKeys Identified Mail) fügt meinen ausgehenden E-Mails eine kryptografische Signatur hinzu.</p>
+
+                    <p>Tutanota verlangte zwei CNAME-Einträge:</p>
+                    <ul>
+                        <li><strong>Name:</strong> <code>s1._domainkey</code> &rarr; <strong>Wert:</strong> <code>s1.domainkey.tutanota.de</code></li>
+                        <li><strong>Name:</strong> <code>s2._domainkey</code> &rarr; <strong>Wert:</strong> <code>s2.domainkey.tutanota.de</code></li>
+                    </ul>
+
+                    <p><strong>Wie es funktioniert:</strong><br>
+                    Wenn ich eine E-Mail von Tutanota sende, hängen sie eine digitale Signatur an, die mit den Schlüsseln erstellt wurde, die unter diesen Adressen gespeichert sind. Der Mailserver des Empfängers kann diese CNAME-Einträge nachschlagen, die Signatur verifizieren und bestätigen, dass die E-Mail tatsächlich von mir stammt und nicht manipuliert wurde.</p>
+
+                    <h3>Schritt 5: Der DMARC-Eintrag (TXT)</h3>
+                    <p>Schließlich verknüpft DMARC (Domain-based Message Authentication, Reporting, and Conformance) SPF und DKIM. Es sagt dem empfangenden Server, was er tun soll, wenn eine E-Mail die SPF- oder DKIM-Prüfungen nicht besteht.</p>
+
+                    <p>Tutanota stellte diesen TXT-Eintrag bereit:</p>
+                    <ul>
+                        <li><strong>Name:</strong> <code>_dmarc</code></li>
+                        <li><strong>Typ:</strong> <code>TXT</code></li>
+                        <li><strong>Wert:</strong> <code>v=DMARC1; p=none; rua=mailto:dmarc@harisn.de</code></li>
+                    </ul>
+
+                    <p><strong>Was das bedeutet:</strong><br>
+                    "Bitte verwenden Sie DMARC1. Wenn eine E-Mail die Authentifizierung fehlschlägt (<code>p=none</code>), lehnen Sie sie nicht sofort ab (noch nicht), aber senden Sie einen Bericht an <code>dmarc@harisn.de</code>, damit ich überwachen kann, was passiert."</p>
+
+                    <h2>Zusammenfassung der finalen Route 53 Konfiguration</h2>
+                    <p>Nach Abschluss beider Phasen enthielt meine Route 53 Hosted Zone für <code>harisn.de</code> eine Mischung aus Einträgen, die unterschiedlichen Zwecken dienen:</p>
+                    <ol>
+                        <li><strong>NS-Einträge:</strong> Delegierung der Autorität an AWS.</li>
+                        <li><strong>A-Eintrag (Alias):</strong> Routing von Web-Traffic an CloudFront.</li>
+                        <li><strong>MX-Eintrag:</strong> Routing von E-Mail-Traffic an Tutanota.</li>
+                        <li><strong>TXT-Einträge:</strong> Verifizierung des Domain-Besitzes (Tutanota) und Definition von E-Mail-Richtlinien (SPF, DMARC).</li>
+                        <li><strong>CNAME-Einträge:</strong> Handhabung kryptografischer Schlüssel für E-Mail-Signierung (DKIM).</li>
+                    </ol>
+
+                    <h2>Fazit</h2>
+                    <p>Die Konfiguration von DNS mag wie langweilige Texteingabe wirken, aber sie ist das Fundament einer professionellen Web-Präsenz. Durch das Verschieben meiner Nameserver zu AWS Route 53 habe ich die volle Kontrolle über mein Traffic-Routing erlangt. Durch die sorgfältige Integration der Tutanota-Einträge habe ich sichergestellt, dass meine E-Mail nicht nur funktional, sondern auch sicher und vertrauenswürdig ist.</p>
+                    
+                    <p>Jedes Mal, wenn jemand <code>harisn.de</code> besucht oder mir eine E-Mail sendet, interagiert er mit diesen spezifischen Einträgen. Es ist ein starkes Gefühl zu wissen, dass ich die Landkarte selbst gebaut habe.</p>
+                </div>
+
+                <!-- English Content -->
+                <div data-lang="en">
+                    <p>When I registered <strong>harisn.de</strong>, I didn't just buy a name; I bought the authority to dictate how the internet finds my digital presence. But a domain name is useless without a map. That map is the <strong>Domain Name System (DNS)</strong>.</p>
+
+                    <p>In my previous posts, I talked about selecting the domain and choosing the hosting (AWS vs. GitHub). Now, I want to cover the glue that holds it all together: configuring DNS records in AWS Route 53 and setting up a secure email service with Tutanota.</p>
+
+                    <p>This process involves two distinct phases:</p>
+                    <ol>
+                        <li><strong>Taking Control:</strong> Moving the domain from the registrar's default nameservers to AWS Route 53.</li>
+                        <li><strong>Configuring Services:</strong> Adding specific records for my website (CloudFront) and my email (Tutanota).</li>
+                    </ol>
+
+                    <p>Here is the step-by-step journey of how I configured <code>harisn.de</code>.</p>
+
+                    <h2>Phase 1: Taking Control with AWS Route 53</h2>
+                    <p>When you register a .de domain with a registrar (like the one I used), they don't just give you the domain; they also assign it to their own default nameservers. These are the servers that initially tell the internet where to look for your domain.</p>
+
+                    <p>However, since I wanted to use AWS for my hosting infrastructure, I needed to move that "phonebook" authority to Amazon. This is done by creating a **Hosted Zone** in Route 53.</p>
+
+                    <h3>Step 1: Create the Hosted Zone</h3>
+                    <p>In the AWS Route 53 console, I created a new hosted zone for <code>harisn.de</code>.</p>
+
+                    <p><strong>What is a Hosted Zone?</strong><br>
+                    Think of a hosted zone as a container for all the DNS records associated with a specific domain. It holds the list of instructions like "The website lives at this IP" or "Send emails to this server."</p>
+
+                    <p>As soon as I created this hosted zone, AWS generated four **NS (Nameserver)** records for me. These looked something like:</p>
+                    <ul>
+                        <li><code>ns-123.awsdns-12.com</code></li>
+                        <li><code>ns-456.awsdns-34.net</code></li>
+                        <li><code>ns-789.awsdns-56.org</code></li>
+                        <li><code>ns-000.awsdns-78.co.uk</code></li>
+                    </ul>
+
+                    <h3>Step 2: The Registrar Switch (Delegation)</h3>
+                    <p>This is the critical step. To make AWS the authoritative source for <code>harisn.de</code>, I had to log into my domain registrar's portal and update the nameservers.</p>
+
+                    <p>I replaced the registrar's default nameservers with the four NS records provided by AWS.</p>
+
+                    <p><strong>Why is this necessary?</strong><br>
+                    This process is called **Delegation**. By updating these records at the registrar, I am effectively telling the global internet: "If you want to know anything about <code>harisn.de</code>, don't ask me anymore. Go ask these AWS servers."</p>
+
+                    <p>Once this change was saved, it could take anywhere from a few minutes to 48 hours to propagate worldwide. During this time, AWS was able to verify that I owned the domain because I controlled the NS records pointing to them.</p>
+
+                    <h2>Phase 2: Configuring the Website (AWS Records)</h2>
+                    <p>With the hosted zone active and delegated, I could start adding records. The first priority was my website.</p>
+
+                    <h3>The Alias Record</h3>
+                    <p>For my static site hosted on AWS S3 and CloudFront, I didn't use a standard A record (which points to an IP address). Instead, I used an **Alias Record**.</p>
+
+                    <ul>
+                        <li><strong>Name:</strong> <code>@</code> (this represents the root domain, <code>harisn.de</code>)</li>
+                        <li><strong>Type:</strong> <code>A</code> (Alias)</li>
+                        <li><strong>Value:</strong> My CloudFront Distribution ID (e.g. <code>d111111abcdef8.cloudfront.net</code>)</li>
+                    </ul>
+
+                    <p><strong>Why an Alias Record?</strong><br>
+                    AWS Alias records are special. They allow a root domain (like <code>harisn.de</code>) to point to AWS resources (like CloudFront or S3) without exposing the underlying IP addresses. They are also free of charge in Route 53 and update automatically if the AWS resource changes.</p>
+
+                    <h2>Phase 3: Configuring Email with Tutanota</h2>
+                    <p>With the website routing sorted, the next challenge was email. I wanted to use <code>info@harisn.de</code>, but I didn't want to run my own mail server. I chose Tutanota for its focus on encryption and privacy.</p>
+
+                    <p>Setting up a custom domain in Tutanota is a partnership. Tutanota provides the values, and I have to put them into my Route 53 hosted zone.</p>
+
+                    <h3>Step 1: The Verification Record (TXT)</h3>
+                    <p>Before Tutanota allows me to receive emails for <code>harisn.de</code>, they need to prove that I actually own the domain.</p>
+
+                    <p>In the Tutanota setup wizard, they provided a specific **TXT record**:</p>
+                    <ul>
+                        <li><strong>Name:</strong> <code>@</code></li>
+                        <li><strong>Type:</strong> <code>TXT</code></li>
+                        <li><strong>Value:</strong> <code>t-verify=xxxxxxxxxxxx</code> (a unique hash string)</li>
+                    </ul>
+
+                    <p>I added this record to Route 53. Once saved, Tutanota's systems periodically check my DNS. When they see this specific string, they know I have administrative access to <code>harisn.de</code>, and they unlock the email configuration.</p>
+
+                    <h3>Step 2: The MX Record (Mail Exchange)</h3>
+                    <p>This is the most important record for email. It tells the internet where to send emails addressed to <code>@harisn.de</code>.</p>
+
+                    <p>Tutanota provided the following MX record:</p>
+                    <ul>
+                        <li><strong>Name:</strong> <code>@</code></li>
+                        <li><strong>Type:</strong> <code>MX</code></li>
+                        <li><strong>Value:</strong> <code>mail.tutanota.de</code></li>
+                        <li><strong>Priority:</strong> <code>10</code></li>
+                    </ul>
+
+                    <p><strong>How it works:</strong><br>
+                    When someone sends an email to <code>info@harisn.de</code>, the sender's mail server looks up the MX record for <code>harisn.de</code>. My Route 53 record responds: "Send it to <code>mail.tutanota.de</code>." The email is then delivered to Tutanota's servers, where it lands in my inbox.</p>
+
+                    <h3>Step 3: The SPF Record (TXT)</h3>
+                    <p>Spam is a huge problem. To prevent spammers from pretending to send emails from my domain (spoofing), I need an SPF (Sender Policy Framework) record.</p>
+
+                    <p>Tutanota provided this TXT record:</p>
+                    <ul>
+                        <li><strong>Name:</strong> <code>@</code></li>
+                        <li><strong>Type:</strong> <code>TXT</code></li>
+                        <li><strong>Value:</strong> <code>v=spf1 include:spf.tutanota.de ~all</code></li>
+                    </ul>
+
+                    <p><strong>What this says:</strong><br>
+                    This record tells the world: "Only the servers listed in <code>spf.tutanota.de</code> are authorized to send email on behalf of <code>harisn.de</code>. If you receive an email from <code>harisn.de</code> that came from anywhere else, reject it."</p>
+
+                    <h3>Step 4: DKIM Records (CNAME)</h3>
+                    <p>SPF is good, but it can be spoofed in transit. DKIM (DomainKeys Identified Mail) adds a cryptographic signature to my outgoing emails.</p>
+
+                    <p>Tutanota required two CNAME records:</p>
+                    <ul>
+                        <li><strong>Name:</strong> <code>s1._domainkey</code> &rarr; <strong>Value:</strong> <code>s1.domainkey.tutanota.de</code></li>
+                        <li><strong>Name:</strong> <code>s2._domainkey</code> &rarr; <strong>Value:</strong> <code>s2.domainkey.tutanota.de</code></li>
+                    </ul>
+
+                    <p><strong>How it works:</strong><br>
+                    When I send an email from Tutanota, they attach a digital signature to it using the keys stored at these addresses. The recipient's mail server can look up these CNAME records, verify the signature, and confirm that the email was truly sent by me and hasn't been tampered with.</p>
+
+                    <h3>Step 5: The DMARC Record (TXT)</h3>
+                    <p>Finally, DMARC (Domain-based Message Authentication, Reporting, and Conformance) ties SPF and DKIM together. It tells the receiving server what to do if an email fails the SPF or DKIM checks.</p>
+
+                    <p>Tutanota provided this TXT record:</p>
+                    <ul>
+                        <li><strong>Name:</strong> <code>_dmarc</code></li>
+                        <li><strong>Type:</strong> <code>TXT</code></li>
+                        <li><strong>Value:</strong> <code>v=DMARC1; p=none; rua=mailto:dmarc@harisn.de</code></li>
+                    </ul>
+
+                    <p><strong>What this says:</strong><br>
+                    "Please use DMARC1. If an email fails authentication (`p=none`), don't reject it outright (yet), but send a report to `dmarc@harisn.de` so I can monitor what's happening."</p>
+
+                    <h2>Summary of the Final Route 53 Configuration</h2>
+                    <p>After completing both phases, my Route 53 hosted zone for <code>harisn.de</code> contained a mix of records serving different purposes:</p>
+                    <ol>
+                        <li><strong>NS Records:</strong> Delegating authority to AWS.</li>
+                        <li><strong>A Record (Alias):</strong> Routing web traffic to CloudFront.</li>
+                        <li><strong>MX Record:</strong> Routing email traffic to Tutanota.</li>
+                        <li><strong>TXT Records:</strong> Verifying domain ownership (Tutanota) and defining email policies (SPF, DMARC).</li>
+                        <li><strong>CNAME Records:</strong> Handling cryptographic keys for email signing (DKIM).</li>
+                    </ol>
+
+                    <h2>Conclusion</h2>
+                    <p>Configuring DNS might seem like tedious text entry, but it is the foundation of a professional web presence. By moving my nameservers to AWS Route 53, I gained full control over my traffic routing. By carefully integrating Tutanota's records, I ensured that my email is not only functional but also secure and trusted.</p>
+                    
+                    <p>Every time someone visits <code>harisn.de</code> or sends me an email, they are interacting with these specific records. It's a powerful feeling to know that I built the map myself.</p>
+                </div>
+            </div>
+            
+            <!-- AI Disclosure Footer -->
+            <div class="ai-disclosure">
+                <p>
+                    <span data-lang="de">
+                        <strong>Technischer Hinweis:</strong> Dieser Blogpost wurde mit Unterstützung von GLM-4.7 verfasst.
+                    </span>
+                    <span data-lang="en">
+                        <strong>Technical Note:</strong> This blog post was written with assistance from GLM-4.7.
+                    </span>
+                </p>
+            </div>
+
+            <a href="index.html#notizbuch" class="back-link">
+                <span>←</span>
+                <span data-lang="de">Zurück zum Notizbuch</span>
+                <span data-lang="en">Back to Notebook</span>
+            </a>
+        </article>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Haris Naeem. <span data-lang="de">Alle Rechte vorbehalten.</span><span data-lang="en">All rights reserved.</span></p>
+        
+        <!-- Social Links Section -->
+        <div class="social-links">
+            <a href="https://github.com/harisnae" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            
+            <a href="https://huggingface.co/harisnaeem" target="_blank" rel="noopener noreferrer" aria-label="HuggingFace" class="social-icon">
+                <span style="font-size: 20px;">🤗</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/haris-naeem-6082ab395/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+
+            <a href="https://www.kaggle.com/harisna" target="_blank" rel="noopener noreferrer" aria-label="Kaggle" class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 22h20L12 2z"></path></svg>
+            </a>
+
+            <a href="https://wa.me/4915167580931" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            </a>
+        </div>
+        
+        <div style="margin-top: 0.5rem; font-size: 0.8rem;">
+            <a href="impressum.html" style="margin: 0 10px; color: var(--text-muted);">
+                <span data-lang="de">Impressum</span>
+                <span data-lang="en">Imprint</span>
+            </a>
+            <a href="datenschutz.html" style="margin: 0 10px; color: var(--text-muted);">
+                <span data-lang="de">Datenschutzerklärung</span>
+                <span data-lang="en">Privacy</span>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<!-- External Scripts (Shared Only) -->
+<script src="scripts.js" defer></script>
+</body>
+</html>
