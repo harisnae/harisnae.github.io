@@ -1587,46 +1587,105 @@ table tr:hover td {
    FOOTER & SOCIAL LINKS
    ===================================================== */
 footer {
-    padding: 3rem 0; /* Increased padding slightly */
+    padding: 3rem 0;
     text-align: center;
     font-size: 0.85rem;
     color: var(--text-muted);
     border-top: 1px solid var(--border);
-    background-color: var(--bg-surface); /* Optional: distinct background */
+    background-color: var(--bg-surface);
 }
 
+/* --- Social Label Styling --- */
+.social-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* --- Social Links Container --- */
 .social-links {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem;
-    margin: 1.5rem 0; /* Space above and below icons */
+    flex-wrap: wrap;
+    gap: 0.75rem; /* Tighter gap for a sleeker look */
+    margin: 2rem 0; /* Slightly more vertical breathing room */
 }
 
-.social-icon {
-    display: flex;
+/* --- Link Styling (Glassmorphism Pill) --- */
+.social-links a {
+    position: relative;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--bg-surface-hover);
+    gap: 0.5rem; /* Space between text and the decorative arrow */
+    
+    /* Dimensions & Shape */
+    padding: 0.6rem 1.2rem;
+    border-radius: 99px;
+    
+    /* Typography */
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
     color: var(--text-secondary);
+    
+    /* Visuals: Glassmorphism Base */
+    background: rgba(255, 255, 255, 0.03); /* Very subtle transparency */
+    border: 1px solid rgba(148, 163, 184, 0.1); /* Low opacity border */
+    backdrop-filter: blur(4px); /* The blur effect */
+    -webkit-backdrop-filter: blur(4px);
+    
+    /* Transition */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden; /* Contains the glow effect */
+}
+
+/* --- Decorative Arrow (Hidden by default) --- */
+.social-links a::before {
+    content: "→"; /* Right Arrow */
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateX(-5px);
     transition: all 0.3s ease;
-    border: 1px solid var(--border);
+    color: var(--primary);
 }
 
-.social-icon:hover {
-    background-color: var(--primary);
-    color: white;
-    border-color: var(--primary);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-sm);
+/* --- Hover State: The "Premium" Feel --- */
+.social-links a:hover {
+    color: var(--primary);
+    background: rgba(79, 70, 229, 0.08); /* Subtle primary tint */
+    border-color: rgba(79, 70, 229, 0.3);
+    transform: translateY(-3px); /* Lifts up */
+    box-shadow: 
+        0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+        0 2px 4px -1px rgba(0, 0, 0, 0.03),
+        0 0 0 1px rgba(79, 70, 229, 0.05); /* Inner glow ring */
 }
 
-/* Ensure the emoji inside HuggingFace icon is centered vertically */
-.social-icon span {
-    line-height: 1;
+/* --- Animate the Arrow on Hover --- */
+.social-links a:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* --- Dark Mode Adjustments for Glassmorphism --- */
+@media (prefers-color-scheme: dark) {
+    .social-links a {
+        background: rgba(255, 255, 255, 0.03);
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+    
+    .social-links a:hover {
+        background: rgba(99, 102, 241, 0.15); /* Stronger tint for dark mode */
+        border-color: rgba(99, 102, 241, 0.4);
+    }
 }
 
 /* =====================================================
